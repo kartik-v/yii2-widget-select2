@@ -27,11 +27,11 @@ to the ```require``` section of your `composer.json` file.
 
 > NOTE: The latest version of the module is v1.0.0 released on 08-Nov-2014. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-select2/blob/master/CHANGE.md) for details.
 
-### Demo
+## Demo
 
 You can refer detailed [documentation and demos](http://demos.krajee.com/widget-details/select2) on usage of the extension.
 
-### Usage
+## Usage
 
 ```php
 use kartik\select2\Select2;
