@@ -12,13 +12,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 To install, either run
 
 ```
-$ php composer.phar require kartik-v/yii2-widget-select2 "dev-master"
+$ php composer.phar require kartik-v/yii2-widget-select2 "*"
 ```
 
 or add
 
 ```
-"kartik-v/yii2-widget-select2": "dev-master"
+"kartik-v/yii2-widget-select2": "*"
 ```
 
 to the ```require``` section of your `composer.json` file.
