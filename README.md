@@ -1,19 +1,13 @@
 yii2-widget-select2
 ===================
 
-This is the Select2 widget and a Yii 2 enhanced wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2). 
-This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite 
-scrolling of results. The widget is specially styled for Bootstrap 3 and offers a few enhancements not available in the 
-source plugin. The widget allows graceful degradation to a normal HTML select or text input, if the browser does not support JQuery.
+This is the Select2 widget and a Yii 2 enhanced wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2). This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results. The widget is specially styled for Bootstrap 3 and offers a few enhancements not available in the source plugin. The widget allows graceful degradation to a normal HTML select or text input, if the browser does not support JQuery.
 
-> NOTE: This extension is a sub repo split of [yii2-widgets](http://github.com/kartik-v/yii2-widgets). The split has been done since 08-Nov-2014
-to allow developers to install the Select2 widget in isolation if needed. One can also use the extension the previos way with the whole suite of 
-[yii2-widgets](http://demos.krajee.com/widgets) if needed.
+> NOTE: This extension is a sub repo split of [yii2-widgets](http://github.com/kartik-v/yii2-widgets). The split has been done since 08-Nov-2014 to allow developers to install the Select2 widget in isolation if needed. One can also use the extension the previous way with the whole suite of [yii2-widgets](http://demos.krajee.com/widgets) if needed.
 
 ## Installation
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/). Check the [composer.json](https://github.com/kartik-v/yii2-widget-select2/blob/master/composer.json) for this extension's requirements and dependencies. 
-Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/). Check the [composer.json](https://github.com/kartik-v/yii2-widget-select2/blob/master/composer.json) for this extension's requirements and dependencies. Read this [web tip /wiki](http://webtips.krajee.com/setting-composer-minimum-stability-application/) on setting the `minimum-stability` settings for your application's composer.json.
 
 To install, either run
 
