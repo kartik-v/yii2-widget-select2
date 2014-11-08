@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-namespace kartik\widgets;
+namespace kartik\select2;
 
 use Yii;
 
