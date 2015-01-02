@@ -179,7 +179,7 @@ class Select2 extends \kartik\base\InputWidget
         
         // set locale and language
         if (!empty($this->language) && substr($this->language, 0, 2) != 'en') {
-            Select2Asset::register($view)->js[] = 'select2_locale_' . $this->language . '.js';
+            Select2Asset::register($view)->js[] = 'select2_locale_' . $this->getLanguageSuffix($this->language) . '.js';
         } else {
             Select2Asset::register($view);
         }
@@ -197,5 +197,20 @@ class Select2 extends \kartik\base\InputWidget
             $this->registerPlugin('select2');
         }
         
+    }
+
+    protected function getLanguageSuffix($language)
+    {
+        $langsExceptions = ['pt-BR', 'pt-PT', 'ug-CN', 'zh-CN', 'zh-TW'];
+
+        if (strpos($language, '-') === false) {
+            return $language;
+        }
+
+        if (in_array($language, $langsExceptions)) {
+            return $language;
+        } else {
+            return substr($language, 0, strpos($language, '-'));
+        }
     }
 }
