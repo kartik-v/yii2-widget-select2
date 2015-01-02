@@ -13,6 +13,7 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
+use kartik\base\Config;
 
 /**
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This
@@ -169,24 +170,34 @@ class Select2 extends \kartik\base\InputWidget
         echo $this->_loadIndicator . $this->embedAddon($input);
     }
 
+     /**
+     * Registers the asset bundle and locale
+     */
+    protected function registerAssetBundle() {
+        $view = $this->getView();
+        if (!empty($this->language) && substr($this->language, 0, 2) != 'en') {
+            $path = __DIR__ . '/lib';
+            $file = "select2_locale_{$this->language}.js";
+            if (!Config::fileExists("{$path}/{$file}")) {
+                $file = "select2_locale_{$this->_lang}.js";
+            }
+            if (Config::fileExists("{$path}/{$file}")) {
+                Select2Asset::register($view)->js[] = $file;
+                return;
+            }
+        }
+        Select2Asset::register($view);
+    }
+    
     /**
      * Registers the needed assets
      */
     public function registerAssets()
     {
-        $view = $this->getView();
         $id = $this->options['id'];
-        
-        // set locale and language
-        if (!empty($this->language) && substr($this->language, 0, 2) != 'en') {
-            Select2Asset::register($view)->js[] = 'select2_locale_' . $this->language . '.js';
-        } else {
-            Select2Asset::register($view);
-        }
-        
+        $this->registerAssetBundle();
         // set default width
         $this->pluginOptions['width'] = 'resolve';
-        
         // validate bootstrap has-success & has-error states
         $this->pluginEvents += ['select2-open' => "function(){initSelect2DropStyle('{$id}')}"];
         
