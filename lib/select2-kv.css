@@ -366,3 +366,7 @@
 .has-success.select2-drop-active.select2-drop.select2-drop-above {
     border-top-color: #2b542c;
 }
+
+.kv-hide .select2-search {
+    display: none;
+}
