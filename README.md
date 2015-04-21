@@ -1,11 +1,11 @@
 yii2-widget-select2
 ===================
 
-[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widget-select2/v/stable.svg)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
-[![License](https://poser.pugx.org/kartik-v/yii2-widget-select2/license.svg)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
-[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/downloads.svg)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
-[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/d/monthly.png)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
-[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/d/daily.png)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
+[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widget-select2/v/stable)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
+[![License](https://poser.pugx.org/kartik-v/yii2-widget-select2/license)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
+[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/downloads)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
+[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/d/monthly)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
+[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/d/daily)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
 
 This is the Select2 widget and a Yii 2 enhanced wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2). This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results. The widget is specially styled for Bootstrap 3 and offers a few enhancements not available in the source plugin. The widget allows graceful degradation to a normal HTML select or text input, if the browser does not support JQuery.
 
