@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2 
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 namespace kartik\select2;
@@ -13,7 +13,6 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
-use kartik\base\Config;
 
 /**
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This
@@ -118,42 +117,45 @@ class Select2 extends \kartik\base\InputWidget
 
     /**
      * Embeds the input group addon
+     *
+     * @param string $input
+     *
+     * @return string
      */
     protected function embedAddon($input)
     {
-        if (!empty($this->addon)) {
-            $addon = $this->addon;
-            $prepend = ArrayHelper::getValue($addon, 'prepend', '');
-            $append = ArrayHelper::getValue($addon, 'append', '');
-            $group = ArrayHelper::getValue($addon, 'groupOptions', []);
-            $size = isset($this->size) ? ' input-group-' . $this->size : '';
-            if ($this->pluginLoading) {
-                Html::addCssClass($group, 'kv-hide group-' . $this->options['id']);
-            }
-            if (is_array($prepend)) {
-                $content = ArrayHelper::getValue($prepend, 'content', '');
-                if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
-                    $prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
-                } else {
-                    $prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
-                }
-                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
-            }
-            if (is_array($append)) {
-                $content = ArrayHelper::getValue($append, 'content', '');
-                if (isset($append['asButton']) && $append['asButton'] == true) {
-                    $append = Html::tag('div', $content, ['class' => 'input-group-btn']);
-                } else {
-                    $append = Html::tag('span', $content, ['class' => 'input-group-addon']);
-                }
-                Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
-            }
-            $addonText = $prepend . $input . $append;
-            $contentBefore = ArrayHelper::getValue($addon, 'contentBefore', '');
-            $contentAfter = ArrayHelper::getValue($addon, 'contentAfter', '');
-            return Html::tag('div', $contentBefore . $addonText . $contentAfter, $group);
+        if (empty($this->addon)) {
+            return $input;
         }
-        return $input;
+        $prepend = ArrayHelper::getValue($this->addon, 'prepend', '');
+        $append = ArrayHelper::getValue($this->addon, 'append', '');
+        $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
+        $size = isset($this->size) ? ' input-group-' . $this->size : '';
+        if ($this->pluginLoading) {
+            Html::addCssClass($group, 'kv-hide group-' . $this->options['id']);
+        }
+        if (is_array($prepend)) {
+            $content = ArrayHelper::getValue($prepend, 'content', '');
+            if (isset($prepend['asButton']) && $prepend['asButton'] == true) {
+                $prepend = Html::tag('div', $content, ['class' => 'input-group-btn']);
+            } else {
+                $prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
+            }
+            Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
+        }
+        if (is_array($append)) {
+            $content = ArrayHelper::getValue($append, 'content', '');
+            if (isset($append['asButton']) && $append['asButton'] == true) {
+                $append = Html::tag('div', $content, ['class' => 'input-group-btn']);
+            } else {
+                $append = Html::tag('span', $content, ['class' => 'input-group-addon']);
+            }
+            Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
+        }
+        $addonText = $prepend . $input . $append;
+        $contentBefore = ArrayHelper::getValue($this->addon, 'contentBefore', '');
+        $contentAfter = ArrayHelper::getValue($this->addon, 'contentAfter', '');
+        return Html::tag('div', $contentBefore . $addonText . $contentAfter, $group);
     }
 
     /**
@@ -180,23 +182,12 @@ class Select2 extends \kartik\base\InputWidget
         echo $this->_loadIndicator . $this->embedAddon($input);
     }
 
-     /**
+    /**
      * Registers the asset bundle and locale
      */
-    protected function registerAssetBundle() {
+    public function registerAssetBundle() {
         $view = $this->getView();
-        if (!empty($this->language) && substr($this->language, 0, 2) != 'en') {
-            $path = __DIR__ . '/lib';
-            $file = "select2_locale_{$this->language}.js";
-            if (!Config::fileExists("{$path}/{$file}")) {
-                $file = "select2_locale_{$this->_lang}.js";
-            }
-            if (Config::fileExists("{$path}/{$file}")) {
-                Select2Asset::register($view)->js[] = $file;
-                return;
-            }
-        }
-        Select2Asset::register($view);
+        Select2Asset::register($view)->addLanguage($this->language, 'select2_locale_', '/');
     }
     
     /**

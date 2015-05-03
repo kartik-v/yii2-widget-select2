@@ -1,14 +1,13 @@
-version 1.1.0
+version 1.0.1
 =============
+**Date:** 03-May-2015
 
-**Date:** 04-Feb-2015
-
-- Fix #2, #3: Register assets based availability of locale files.
-- Fix #13: Add ability to hide search control and use as normal select.
+- (enh #2, #3): Register assets based on availability of locale files.
+- (enh #13): Add ability to hide search control and use as normal select.
+- (enh kartik-v/yii2-krajee-base#34, kartik-v/yii2-krajee-base#35): Enhance i18n translation locales.
 
 version 1.0.0
 =============
-
 **Date:** 08-Nov-2014
 
 - Initial release 
