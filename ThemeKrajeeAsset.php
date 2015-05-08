@@ -12,12 +12,12 @@ namespace kartik\select2;
 use Yii;
 
 /**
- * Asset bundle for Select2 Widget
+ * Krajee Select2 theme
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class Select2Asset extends \kartik\base\AssetBundle
+class ThemeKrajeeAsset extends \kartik\base\AssetBundle
 {
 
     /**
@@ -26,8 +26,7 @@ class Select2Asset extends \kartik\base\AssetBundle
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/lib');
-        $this->setupAssets('css', ['css/select2']);
-        $this->setupAssets('js', ['js/select2.full', 'js/select2-krajee']);
+        $this->setupAssets('css', ['css/select2-krajee']);
         parent::init();
     }
 

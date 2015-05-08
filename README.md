@@ -31,7 +31,22 @@ to the ```require``` section of your `composer.json` file.
 
 ## Latest Release
 
-> NOTE: The latest version of the module is v1.0.1. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-select2/blob/master/CHANGE.md) for details.
+> NOTE: The latest version of the module is v2.0 Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-select2/blob/master/CHANGE.md) for details.
+
+The widget has a major version revamp with v2.0. This release includes updates to use Select2 plugin release v4.0. Select2 release v4.0 is a major rewrite over Select2 v3.x and hence quite a few enhancements or changes should be expected. To use the earlier plugin release v3.5.2, you must point it to the [v1.0.1 release](https://github.com/kartik-v/yii2-widget-select2/releases/tag/v1.0.1) of the widget.
+
+Enhancements with release v2.0:
+
+- New `theme` property that allows you to set themes in Select2 to style your widget.
+- A brand new theme by Krajee `Select2::THEME_KRAJEE` is specially styled for Select2. This will help achieve various new yii2-widget-select2 features. This theme matches the bootstrap 3 styling with enhancements.
+- Additional themes provided in form of `Select2::THEME_DEFAULT`, `Select2::THEME_CLASSIC`, and `Select2::THEME_BOOTSTRAP`. One can add their own custom theme and configure the widget.
+- No more `query` plugin property needed. It is also not mandatory to configure `data` even if you have not set `tags` or `query` or `ajax`. Widget will intelligently evaluate the properties and default list values.
+- Enhanced tagging support. Use it just like a multiple select but with taggable values. In addition, one can create tags on the fly.
+- Enhanced ajax support. Refer the [demos](http://demos.krajee.com/widget-details/select2) for details.
+- The `initSelection` method of Select2 3.5.x plugin is obsolete/removed. New `initValueText` property is been provided with the Select2 widget to cater to this (e.g. for ajax based loading).
+- Ability to disable selective option values in the Select2 dropdown OR add HTML attributes to selective options.
+- Enhancement by Krajee to disable the search box to use like a normal select.
+- Enhancements to locales and translations. Allow multiple language Select2 widgets on the same page.
 
 ## Demo
 
@@ -44,7 +59,7 @@ use kartik\select2\Select2;
 
 // Normal select with ActiveForm & model
 echo $form->field($model, 'state_1')->widget(Select2::classname(), [
-    'data' => array_merge(["" => ""], $data),
+    'data' => $data,
     'language' => 'de',
     'options' => ['placeholder' => 'Select a state ...'],
     'pluginOptions' => [

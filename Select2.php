@@ -3,8 +3,8 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
- * @subpackage yii2-widget-select2 
- * @version 1.0.1
+ * @subpackage yii2-widget-select2
+ * @version 2.0.0
  */
 
 namespace kartik\select2;
@@ -22,21 +22,45 @@ use yii\base\InvalidConfigException;
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
- * @see http://ivaynberg.github.com/select2/
+ * @see https://github.com/select2/select2
  */
 class Select2 extends \kartik\base\InputWidget
 {
-
     const LARGE = 'lg';
     const MEDIUM = 'md';
     const SMALL = 'sm';
+
+    const THEME_DEFAULT = 'default';
+    const THEME_CLASSIC = 'classic';
+    const THEME_BOOTSTRAP = 'bootstrap';
+    const THEME_KRAJEE = 'krajee';
+
+    /**
+     * @var array $data the option data items. The array keys are option values, and the array values
+     * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
+     * For each sub-array, an option group will be generated whose label is the key associated with the sub-array.
+     * If you have a list of data models, you may convert them into the format described above using
+     * [[\yii\helpers\ArrayHelper::map()]].
+     */
+    public $data;
 
     /**
      * @var string the locale ID (e.g. 'fr', 'de') for the language to be used by the Select2 Widget.
      * If this property not set, then the current application language will be used.
      */
     public $language;
-    
+
+    /**
+     * @var string the theme name to be used for styling the Select2
+     */
+    public $theme = self::THEME_KRAJEE;
+
+    /**
+     * @var string, the displayed text in the dropdown for the initial
+     * value when you do not set or provide `data` (e.g. using with ajax).
+     */
+    public $initValueText;
+
     /**
      * @var bool whether to hide the search control and render it as a simple select. Defaults to `false`.
      */
@@ -63,56 +87,67 @@ class Select2 extends \kartik\base\InputWidget
     public $size = self::MEDIUM;
 
     /**
-     * @var array $data the option data items. The array keys are option values, and the array values
-     * are the corresponding option labels. The array can also be nested (i.e. some array values are arrays too).
-     * For each sub-array, an option group will be generated whose label is the key associated with the sub-array.
-     * If you have a list of data models, you may convert them into the format described above using
-     * [[\yii\helpers\ArrayHelper::map()]].
-     */
-    public $data;
-
-    /**
      * @var array the HTML attributes for the input tag. The following options are important:
      * - multiple: boolean whether multiple or single item should be selected. Defaults to false.
      * - placeholder: string placeholder for the select item.
      */
     public $options = [];
 
-    /**
-     * @var boolean indicator for displaying text inputs
-     * instead of select fields
-     */
-    private $_hidden = false;
+    protected static $_inbuiltThemes = [
+        self::THEME_DEFAULT,
+        self::THEME_CLASSIC,
+        self::THEME_BOOTSTRAP,
+        self::THEME_KRAJEE,
+    ];
 
     /**
-     * Initializes the widget
-     *
-     * @throw InvalidConfigException
+     * @inheritdoc
      */
     public function init()
     {
+        $this->pluginOptions['theme'] = $this->theme;
         parent::init();
-        $this->_hidden = !empty($this->pluginOptions['data']) ||
-            !empty($this->pluginOptions['query']) ||
-            !empty($this->pluginOptions['ajax']) ||
-            isset($this->pluginOptions['tags']);
-        if (!isset($this->data) && !$this->_hidden) {
-            throw new InvalidConfigException("No 'data' source found for Select2. Either the 'data' property must be set OR one of 'data', 'query', 'ajax', or 'tags' must be set within 'pluginOptions'.");
+        if (ArrayHelper::getValue($this->pluginOptions, 'tags', false)) {
+            $this->options['multiple'] = true;
         }
         if ($this->hideSearch) {
             $css = ArrayHelper::getValue($this->pluginOptions, 'dropdownCssClass', '');
-            $css .= ' kv-hide';
+            $css .= ' kv-hide-search';
             $this->pluginOptions['dropdownCssClass'] = $css;
         }
-        if (!empty($this->options['placeholder']) && !$this->_hidden &&
-            (empty($this->options['multiple']) || $this->options['multiple'] == false)
-        ) {
-            $this->data = ["" => ""] + $this->data;
+        $this->initPlaceholder();
+        if (!isset($this->data)) {
+            $key = empty($this->value) ? '' : $this->value;
+            $val = empty($this->initValueText) ? $key : $this->initValueText;
+            $this->data = [$key => $val];
         }
         Html::addCssClass($this->options, 'form-control');
         Html::addCssStyle($this->options, 'width:100%', false);
+        $this->initLanguage();
         $this->registerAssets();
         $this->renderInput();
+    }
+
+    /**
+     * Initializes the placeholder for Select2
+     */
+    protected function initPlaceholder()
+    {
+        $isMultiple = ArrayHelper::getValue($this->options, 'multiple', false);
+        if (!empty($this->options['prompt']) && empty($this->pluginOptions['placeholder'])) {
+            $this->pluginOptions['placeholder'] = $this->options['prompt'];
+            if ($isMultiple) {
+                unset($this->options['prompt']);
+            }
+            return;
+        }
+        if (!empty($this->options['placeholder'])) {
+            $this->pluginOptions['placeholder'] = $this->options['placeholder'];
+            unset($this->options['placeholder']);
+        }
+        if (!empty($this->pluginOptions['placeholder']) && is_string($this->pluginOptions['placeholder']) && !$isMultiple) {
+            $this->options['prompt'] = $this->pluginOptions['placeholder'];
+        }
     }
 
     /**
@@ -124,15 +159,20 @@ class Select2 extends \kartik\base\InputWidget
      */
     protected function embedAddon($input)
     {
-        if (empty($this->addon)) {
+        if (!isset($this->size) && empty($this->addon)) {
             return $input;
+        }
+        $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
+        $size = isset($this->size) ? ' input-group-' . $this->size : '';
+        Html::addCssClass($group, 'input-group' . $size);
+        if (empty($this->addon)) {
+            return Html::tag('div', $input, $group);
         }
         $prepend = ArrayHelper::getValue($this->addon, 'prepend', '');
         $append = ArrayHelper::getValue($this->addon, 'append', '');
-        $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
-        $size = isset($this->size) ? ' input-group-' . $this->size : '';
         if ($this->pluginLoading) {
-            Html::addCssClass($group, 'kv-hide group-' . $this->options['id']);
+            Html::addCssClass($group, 'kv-input-group-hide');
+            Html::addCssClass($group, 'group-' . $this->options['id']);
         }
         if (is_array($prepend)) {
             $content = ArrayHelper::getValue($prepend, 'content', '');
@@ -141,7 +181,7 @@ class Select2 extends \kartik\base\InputWidget
             } else {
                 $prepend = Html::tag('span', $content, ['class' => 'input-group-addon']);
             }
-            Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-prepend');
+            Html::addCssClass($group, 'select2-bootstrap-prepend');
         }
         if (is_array($append)) {
             $content = ArrayHelper::getValue($append, 'content', '');
@@ -150,7 +190,7 @@ class Select2 extends \kartik\base\InputWidget
             } else {
                 $append = Html::tag('span', $content, ['class' => 'input-group-addon']);
             }
-            Html::addCssClass($group, 'input-group' . $size . ' select2-bootstrap-append');
+            Html::addCssClass($group, 'select2-bootstrap-append');
         }
         $addonText = $prepend . $input . $append;
         $contentBefore = ArrayHelper::getValue($this->addon, 'contentBefore', '');
@@ -166,30 +206,28 @@ class Select2 extends \kartik\base\InputWidget
      */
     protected function renderInput()
     {
-        $class = $this->pluginLoading ? 'kv-hide ' : '';
-        if (empty($this->addon) && isset($this->size)) {
-            $class .= 'input-' . $this->size;
-        }
         if ($this->pluginLoading) {
             $this->_loadIndicator = '<div class="kv-plugin-loading loading-' . $this->options['id'] . '">&nbsp;</div>';
+            Html::addCssStyle($this->options, 'display:none');
         }
-        Html::addCssClass($this->options, $class);
-        if ($this->_hidden) {
-            $input = $this->getInput('textInput');
-        } else {
-            $input = $this->getInput('dropDownList', true);
-        }
+        $input = $this->getInput('dropDownList', true);
         echo $this->_loadIndicator . $this->embedAddon($input);
     }
 
     /**
      * Registers the asset bundle and locale
      */
-    public function registerAssetBundle() {
+    public function registerAssetBundle()
+    {
         $view = $this->getView();
-        Select2Asset::register($view)->addLanguage($this->language, 'select2_locale_', '/');
+        $lang = isset($this->language) ? $this->language : '';
+        Select2Asset::register($view)->addLanguage($lang, '', 'js/i18n');
+        if (in_array($this->theme, self::$_inbuiltThemes)) {
+            $bundleClass = __NAMESPACE__ . '\Theme' . ucfirst($this->theme) . 'Asset';
+            $bundleClass::register($view);
+        } 
     }
-    
+
     /**
      * Registers the needed assets
      */
@@ -197,17 +235,19 @@ class Select2 extends \kartik\base\InputWidget
     {
         $id = $this->options['id'];
         $this->registerAssetBundle();
-        // set default width
-        $this->pluginOptions['width'] = 'resolve';
         // validate bootstrap has-success & has-error states
-        $this->pluginEvents += ['select2-open' => "function(){initSelect2DropStyle('{$id}')}"];
-        
+        $clear = 'kv_close_' . str_replace('-', '_', $id);
+        $this->pluginEvents += [
+            'select2:opening' => "function(event){initSelect2DropStyle('{$id}', '{$clear}', event);}",
+            'select2:unselect' => "function(){window.{$clear} = true;}"
+        ];
         // register plugin
         if ($this->pluginLoading) {
-            $this->registerPlugin('select2', "jQuery('#{$id}')", "initSelect2Loading('{$id}')");
+            $this->registerPlugin('select2', "jQuery('#{$id}')",
+                "initSelect2Loading('{$id}', '.select2-container--{$this->theme}')");
         } else {
             $this->registerPlugin('select2');
         }
-        
+
     }
 }
