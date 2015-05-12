@@ -1,3 +1,10 @@
+version 2.0.1
+=============
+**Date:** 12-May-2015
+
+- (enh #28): Better width style validation for Select2.
+- (enh #32): More correct language validation.
+
 version 2.0.0
 =============
 **Date:** 09-May-2015

@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.0
+ * @version 2.0.1
  */
 
 namespace kartik\select2;
@@ -122,8 +122,7 @@ class Select2 extends \kartik\base\InputWidget
             $this->data = [$key => $val];
         }
         Html::addCssClass($this->options, 'form-control');
-        Html::addCssStyle($this->options, 'width:100%', false);
-        $this->initLanguage();
+        $this->initLanguage('language', true);
         $this->registerAssets();
         $this->renderInput();
     }
