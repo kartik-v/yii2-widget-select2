@@ -107,7 +107,8 @@ class Select2 extends \kartik\base\InputWidget
     {
         $this->pluginOptions['theme'] = $this->theme;
         parent::init();
-        if (ArrayHelper::getValue($this->pluginOptions, 'tags', false)) {
+        if (ArrayHelper::getValue($this->pluginOptions, 'tags', false)
+            || ArrayHelper::getValue($this->pluginOptions, 'multiple', false)) {
             $this->options['multiple'] = true;
         }
         if ($this->hideSearch) {
@@ -118,8 +119,12 @@ class Select2 extends \kartik\base\InputWidget
         $this->initPlaceholder();
         if (!isset($this->data)) {
             $key = empty($this->value) ? '' : $this->value;
-            $val = empty($this->initValueText) ? $key : $this->initValueText;
-            $this->data = [$key => $val];
+            if (is_array($key)) {
+                $this->data = $key;
+            } else {
+                $val = empty($this->initValueText) ? $key : $this->initValueText;
+                $this->data = [$key => $val];
+            }
         }
         Html::addCssClass($this->options, 'form-control');
         $this->initLanguage('language', true);
