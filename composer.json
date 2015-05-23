@@ -4,7 +4,7 @@
     "keywords": ["yii2", "extension", "widget", "select2", "form", "dropdown", "jquery", "plugin"],
     "homepage": "https://github.com/kartik-v/yii2-widget-select2",
     "type": "yii2-extension",
-    "license": "BSD 3-Clause",
+    "license": "BSD-3-Clause",
     "minimum-stability": "stable",
     "authors": [
         {

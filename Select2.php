@@ -106,6 +106,9 @@ class Select2 extends \kartik\base\InputWidget
     public function init()
     {
         $this->pluginOptions['theme'] = $this->theme;
+        if (!empty($this->addon) && ($this->theme === self::THEME_KRAJEE || $this->theme === self::THEME_BOOTSTRAP)) { 
+            $this->pluginOptions['width'] = '100%';
+        }
         parent::init();
         if (ArrayHelper::getValue($this->pluginOptions, 'tags', false)) {
             $this->options['multiple'] = true;
