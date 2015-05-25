@@ -56,8 +56,10 @@ class Select2 extends \kartik\base\InputWidget
     public $theme = self::THEME_KRAJEE;
 
     /**
-     * @var string, the displayed text in the dropdown for the initial
+     * @var string|array, the displayed text in the dropdown for the initial
      * value when you do not set or provide `data` (e.g. using with ajax).
+     * If options['multiple'] is set to `true`, you can set this as an array of
+     * text descriptions for each item in the dropdown `value`.
      */
     public $initValueText;
 
@@ -105,14 +107,16 @@ class Select2 extends \kartik\base\InputWidget
      */
     public function init()
     {
+        parent::init();
         $this->pluginOptions['theme'] = $this->theme;
         if (!empty($this->addon) && ($this->theme === self::THEME_KRAJEE || $this->theme === self::THEME_BOOTSTRAP)) { 
             $this->pluginOptions['width'] = '100%';
         }
-        parent::init();
-        if (ArrayHelper::getValue($this->pluginOptions, 'tags', false)) {
-            $this->options['multiple'] = true;
-        }
+        $multiple = ArrayHelper::getValue($this->pluginOptions, 'multiple', false);
+        unset($this->pluginOptions['multiple']);
+        $multiple = ArrayHelper::getValue($this->pluginOptions, 'tags', false) ? true :
+            ArrayHelper::getValue($this->options, 'multiple', $multiple);
+        $this->options['multiple'] = $multiple;
         if ($this->hideSearch) {
             $css = ArrayHelper::getValue($this->pluginOptions, 'dropdownCssClass', '');
             $css .= ' kv-hide-search';
@@ -120,9 +124,13 @@ class Select2 extends \kartik\base\InputWidget
         }
         $this->initPlaceholder();
         if (!isset($this->data)) {
-            $key = empty($this->value) ? '' : $this->value;
-            $val = empty($this->initValueText) ? $key : $this->initValueText;
-            $this->data = [$key => $val];
+            if (empty($this->value) && empty($this->initValueText)) {
+                $this->data = [];
+            } else {
+                $key = empty($this->value) ? ($multiple ? [] : '') : $this->value;
+                $val = empty($this->initValueText) ? $key : $this->initValueText;
+                $this->data = $multiple ? array_combine($key, $val) : [$key => $val];
+            }
         }
         Html::addCssClass($this->options, 'form-control');
         $this->initLanguage('language', true);

@@ -4,6 +4,7 @@ version 2.0.1
 
 - (enh #28): Better width style validation for Select2.
 - (enh #32): More correct language validation.
+- (enh #34): Better initialization for `data` and `multiple` ajax select.
 
 version 2.0.0
 =============
