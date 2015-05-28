@@ -109,7 +109,7 @@ class Select2 extends \kartik\base\InputWidget
     {
         parent::init();
         $this->pluginOptions['theme'] = $this->theme;
-        if (!empty($this->addon) && ($this->theme === self::THEME_KRAJEE || $this->theme === self::THEME_BOOTSTRAP)) { 
+        if (!empty($this->addon) || empty($this->pluginOptions['width'])) { 
             $this->pluginOptions['width'] = '100%';
         }
         $multiple = ArrayHelper::getValue($this->pluginOptions, 'multiple', false);
@@ -247,6 +247,7 @@ class Select2 extends \kartik\base\InputWidget
         $this->registerAssetBundle();
         // validate bootstrap has-success & has-error states
         $clear = 'kv_close_' . str_replace('-', '_', $id);
+        // do not open dropdown when clear icon is pressed to clear value
         $this->pluginEvents += [
             'select2:opening' => "function(event){initSelect2DropStyle('{$id}', '{$clear}', event);}",
             'select2:unselect' => "function(){window.{$clear} = true;}"
@@ -258,6 +259,5 @@ class Select2 extends \kartik\base\InputWidget
         } else {
             $this->registerPlugin('select2');
         }
-
     }
 }
