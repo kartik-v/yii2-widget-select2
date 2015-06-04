@@ -245,17 +245,15 @@ class Select2 extends \kartik\base\InputWidget
     {
         $id = $this->options['id'];
         $this->registerAssetBundle();
-        // validate bootstrap has-success & has-error states
-        $clear = 'kv_close_' . str_replace('-', '_', $id);
         // do not open dropdown when clear icon is pressed to clear value
-        $this->pluginEvents += [
-            'select2:opening' => "function(event){initSelect2DropStyle('{$id}', '{$clear}', event);}",
-            'select2:unselect' => "function(){window.{$clear} = true;}"
-        ];
+
+        $js = "\$('#{$id}').on('select2:opening', initS2Open).on('select2:unselecting', initS2Unselect);";
+        $this->getView()->registerJs($js);
+
         // register plugin
         if ($this->pluginLoading) {
             $this->registerPlugin('select2', "jQuery('#{$id}')",
-                "initSelect2Loading('{$id}', '.select2-container--{$this->theme}')");
+                "initS2Loading('{$id}', '.select2-container--{$this->theme}')");
         } else {
             $this->registerPlugin('select2');
         }
