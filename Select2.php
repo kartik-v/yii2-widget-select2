@@ -109,7 +109,7 @@ class Select2 extends \kartik\base\InputWidget
     {
         parent::init();
         $this->pluginOptions['theme'] = $this->theme;
-        if (!empty($this->addon) || empty($this->pluginOptions['width'])) { 
+        if (!empty($this->addon) || empty($this->pluginOptions['width'])) {
             $this->pluginOptions['width'] = '100%';
         }
         $multiple = ArrayHelper::getValue($this->pluginOptions, 'multiple', false);
@@ -235,7 +235,7 @@ class Select2 extends \kartik\base\InputWidget
         if (in_array($this->theme, self::$_inbuiltThemes)) {
             $bundleClass = __NAMESPACE__ . '\Theme' . ucfirst($this->theme) . 'Asset';
             $bundleClass::register($view);
-        } 
+        }
     }
 
     /**
@@ -246,14 +246,15 @@ class Select2 extends \kartik\base\InputWidget
         $id = $this->options['id'];
         $this->registerAssetBundle();
         // do not open dropdown when clear icon is pressed to clear value
-
         $js = "\$('#{$id}').on('select2:opening', initS2Open).on('select2:unselecting', initS2Unselect);";
         $this->getView()->registerJs($js);
-
         // register plugin
         if ($this->pluginLoading) {
-            $this->registerPlugin('select2', "jQuery('#{$id}')",
-                "initS2Loading('{$id}', '.select2-container--{$this->theme}')");
+            $this->registerPlugin(
+                'select2',
+                "jQuery('#{$id}')",
+                "initS2Loading('{$id}', '.select2-container--{$this->theme}')"
+            );
         } else {
             $this->registerPlugin('select2');
         }

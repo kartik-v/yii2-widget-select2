@@ -1,11 +1,12 @@
 version 2.0.1
 =============
-**Date:** 04-Jun-2015
+**Date:** 07-Jun-2015
 
 - (enh #28): Better width style validation for Select2.
 - (enh #32): More correct language validation.
 - (enh #34): Better initialization for `data` and `multiple` ajax select.
 - (bug #42): Fix plugin bug that prevents clearing Select2 input correctly.
+- (enh #43): Code style and formatting fixes.
 
 version 2.0.0
 =============

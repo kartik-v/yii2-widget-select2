@@ -3,7 +3,7 @@
 /**
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
- * @subpackage yii2-widget-select2 
+ * @subpackage yii2-widget-select2
  * @version 2.0.1
  */
 
@@ -19,7 +19,6 @@ use Yii;
  */
 class ThemeKrajeeAsset extends \kartik\base\AssetBundle
 {
-
     /**
      * @inheritdoc
      */
@@ -29,5 +28,4 @@ class ThemeKrajeeAsset extends \kartik\base\AssetBundle
         $this->setupAssets('css', ['css/select2-krajee']);
         parent::init();
     }
-
 }
