@@ -8,6 +8,7 @@ version 2.0.1
 - (bug #42): Fix plugin bug that prevents clearing Select2 input correctly.
 - (enh #43): Code style and formatting fixes.
 - (enh #44): Trigger custom event `krajeeselect2:cleared`.
+- (enh #49): Allow custom tags to be added for both single select and multiple select.
 
 version 2.0.0
 =============

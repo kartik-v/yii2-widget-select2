@@ -114,9 +114,7 @@ class Select2 extends \kartik\base\InputWidget
         }
         $multiple = ArrayHelper::getValue($this->pluginOptions, 'multiple', false);
         unset($this->pluginOptions['multiple']);
-        $multiple = ArrayHelper::getValue($this->pluginOptions, 'tags', false) ? true :
-            ArrayHelper::getValue($this->options, 'multiple', $multiple);
-        $this->options['multiple'] = $multiple;
+        $this->options['multiple'] = ArrayHelper::getValue($this->options, 'multiple', $multiple);
         if ($this->hideSearch) {
             $css = ArrayHelper::getValue($this->pluginOptions, 'dropdownCssClass', '');
             $css .= ' kv-hide-search';
