@@ -5,7 +5,6 @@
     "homepage": "https://github.com/kartik-v/yii2-widget-select2",
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
-    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Kartik Visweswaran",
