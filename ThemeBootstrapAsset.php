@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.1
+ * @version 2.0.2
  */
 
 namespace kartik\select2;
@@ -24,7 +24,7 @@ class ThemeBootstrapAsset extends \kartik\base\AssetBundle
      */
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/lib');
+        $this->setSourcePath(__DIR__ . '/assets');
         $this->setupAssets('css', ['css/select2-bootstrap']);
         parent::init();
     }

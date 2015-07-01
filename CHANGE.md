@@ -1,3 +1,11 @@
+version 2.0.2
+=============
+**Date:** 01-Jul-2015
+
+- Rename `lib` folder to `assets` for consistency.
+- (enh #53): Correct validation of values using `isset` instead of `empty`.
+- (enh #54): Styling for select2 on focus (via tab and applicable only for THEME_KRAJEE).
+
 version 2.0.1
 =============
 **Date:** 07-Jun-2015

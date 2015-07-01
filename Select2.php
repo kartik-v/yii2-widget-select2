@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.1
+ * @version 2.0.2
  */
 
 namespace kartik\select2;
@@ -122,11 +122,11 @@ class Select2 extends \kartik\base\InputWidget
         }
         $this->initPlaceholder();
         if (!isset($this->data)) {
-            if (empty($this->value) && empty($this->initValueText)) {
+            if (!isset($this->value) && !isset($this->initValueText)) {
                 $this->data = [];
             } else {
-                $key = empty($this->value) ? ($multiple ? [] : '') : $this->value;
-                $val = empty($this->initValueText) ? $key : $this->initValueText;
+                $key = isset($this->value) ? $this->value : ($multiple ? [] : '');
+                $val = isset($this->initValueText) ? $this->initValueText : $key;
                 $this->data = $multiple ? array_combine($key, $val) : [$key => $val];
             }
         }
@@ -142,18 +142,18 @@ class Select2 extends \kartik\base\InputWidget
     protected function initPlaceholder()
     {
         $isMultiple = ArrayHelper::getValue($this->options, 'multiple', false);
-        if (!empty($this->options['prompt']) && empty($this->pluginOptions['placeholder'])) {
+        if (isset($this->options['prompt']) && !isset($this->pluginOptions['placeholder'])) {
             $this->pluginOptions['placeholder'] = $this->options['prompt'];
             if ($isMultiple) {
                 unset($this->options['prompt']);
             }
             return;
         }
-        if (!empty($this->options['placeholder'])) {
+        if (isset($this->options['placeholder'])) {
             $this->pluginOptions['placeholder'] = $this->options['placeholder'];
             unset($this->options['placeholder']);
         }
-        if (!empty($this->pluginOptions['placeholder']) && is_string($this->pluginOptions['placeholder']) && !$isMultiple) {
+        if (isset($this->pluginOptions['placeholder']) && is_string($this->pluginOptions['placeholder']) && !$isMultiple) {
             $this->options['prompt'] = $this->pluginOptions['placeholder'];
         }
     }
