@@ -14,7 +14,7 @@ var initS2Loading = function () {
 };
 (function ($) {
     "use strict";
-    initS2Loading = function (id, containerCss) {
+    initS2Loading = function (id, containerCss, sizeCss) {
         var $el = $('#' + id), $container = $(containerCss),
             $loading = $('.kv-plugin-loading.loading-' + id),
             $group = $('.group-' + id);
@@ -25,6 +25,9 @@ var initS2Loading = function () {
             $group.removeClass('kv-input-group-hide').removeClass('.group-' + id);
         }
         $loading.remove();
+        if (sizeCss) {
+            $el.next(containerCss).removeClass(sizeCss).addClass(sizeCss);
+        }
     };
     initS2Open = function () {
         var $el = $(this), $drop = $(".select2-container--open"),

@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.2
+ * @version 2.0.3
  */
 
 namespace kartik\select2;
@@ -168,7 +168,7 @@ class Select2 extends \kartik\base\InputWidget
      */
     protected function embedAddon($input)
     {
-        if (!isset($this->size) && empty($this->addon)) {
+        if (empty($this->addon)) {
             return $input;
         }
         $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
@@ -247,12 +247,13 @@ class Select2 extends \kartik\base\InputWidget
         // do not open dropdown when clear icon is pressed to clear value
         $js = "\$('#{$id}').on('select2:opening', initS2Open).on('select2:unselecting', initS2Unselect);";
         $this->getView()->registerJs($js);
+        $size = empty($this->addon) && $this->size !== self::MEDIUM ? 'input-' . $this->size : '';
         // register plugin
         if ($this->pluginLoading) {
             $this->registerPlugin(
                 'select2',
                 "jQuery('#{$id}')",
-                "initS2Loading('{$id}', '.select2-container--{$this->theme}')"
+                "initS2Loading('{$id}', '.select2-container--{$this->theme}', '{$size}')"
             );
         } else {
             $this->registerPlugin('select2');

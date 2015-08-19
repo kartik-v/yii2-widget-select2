@@ -1,13 +1,23 @@
-version 2.0.2
-=============
+Change Log: `yii2-widget-select2`
+=================================
+
+## Version 2.0.3
+
+**Date:** 20-Aug-2015
+
+- (enh #57): Better handling of `multiple` property.
+- (enh #58): Enhance styling of Select2 Krajee theme for non input groups.
+
+## Version 2.0.2
+
 **Date:** 01-Jul-2015
 
 - Rename `lib` folder to `assets` for consistency.
 - (enh #53): Correct validation of values using `isset` instead of `empty`.
 - (enh #54): Styling for select2 on focus (via tab and applicable only for THEME_KRAJEE).
 
-version 2.0.1
-=============
+## Version 2.0.1
+
 **Date:** 07-Jun-2015
 
 - (enh #28): Better width style validation for Select2.
@@ -18,8 +28,8 @@ version 2.0.1
 - (enh #44): Trigger custom event `krajeeselect2:cleared`.
 - (enh #49): Allow custom tags to be added for both single select and multiple select.
 
-version 2.0.0
-=============
+## Version 2.0.0
+
 **Date:** 09-May-2015
 
 Major revamp to the widget. Version bumped to release v2.0.0.
@@ -36,8 +46,8 @@ Major revamp to the widget. Version bumped to release v2.0.0.
     - Enhancement by Krajee to disable the search box to use like a normal select.
     - Enhancements to locales and translations. Allow multiple language Select2 widgets on the same page.
     
-version 1.0.1
-=============
+## Version 1.0.1
+
 **Date:** 03-May-2015
 
 - (enh #2, #3): Register assets based on availability of locale files.
@@ -45,8 +55,8 @@ version 1.0.1
 - (enh kartik-v/yii2-krajee-base#34, kartik-v/yii2-krajee-base#35): Enhance i18n translation locales.
 - (enh #22): Enhance JS code to support older browser/IE versions.
 
-version 1.0.0
-=============
+## Version 1.0.0
+
 **Date:** 08-Nov-2014
 
 - Initial release 
