@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version 2.0.2
+ * @version 2.0.3
  *
  * Additional enhancements for Select2 widget extension for Yii 2.0.
  *
@@ -14,7 +14,7 @@ var initS2Loading = function () {
 };
 (function ($) {
     "use strict";
-    initS2Loading = function (id, containerCss, sizeCss) {
+    initS2Loading = function (id, containerCss, sizeCss, $reset) {
         var $el = $('#' + id), $container = $(containerCss),
             $loading = $('.kv-plugin-loading.loading-' + id),
             $group = $('.group-' + id);
@@ -27,6 +27,13 @@ var initS2Loading = function () {
         $loading.remove();
         if (sizeCss) {
             $el.next(containerCss).removeClass(sizeCss).addClass(sizeCss);
+        }
+        if ($reset) {
+            $el.closest("form").on("reset", function(){
+                setTimeout(function(){
+                    $el.trigger("change");
+                }, 100);
+            });
         }
     };
     initS2Open = function () {

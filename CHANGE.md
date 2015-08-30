@@ -3,10 +3,11 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.0.3
 
-**Date:** 20-Aug-2015
+**Date:** 30-Aug-2015
 
 - (enh #57): Better handling of `multiple` property.
 - (enh #58): Enhance styling of Select2 Krajee theme for non input groups.
+- (enh #64): Ability to reset Select2 on form reset.
 
 ## Version 2.0.2
 

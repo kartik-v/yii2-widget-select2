@@ -56,6 +56,12 @@ class Select2 extends \kartik\base\InputWidget
     public $theme = self::THEME_KRAJEE;
 
     /**
+     * @var bool whether to trigger change for Select2 input on form reset
+     * so the Select2 value is rightly reset.
+     */
+    public $changeOnReset = true;
+
+    /**
      * @var string|array, the displayed text in the dropdown for the initial
      * value when you do not set or provide `data` (e.g. using with ajax).
      * If options['multiple'] is set to `true`, you can set this as an array of
@@ -250,10 +256,11 @@ class Select2 extends \kartik\base\InputWidget
         $size = empty($this->addon) && $this->size !== self::MEDIUM ? 'input-' . $this->size : '';
         // register plugin
         if ($this->pluginLoading) {
+            $reset = $this->changeOnReset ? 'true' : 'false';
             $this->registerPlugin(
                 'select2',
                 "jQuery('#{$id}')",
-                "initS2Loading('{$id}', '.select2-container--{$this->theme}', '{$size}')"
+                "initS2Loading('{$id}', '.select2-container--{$this->theme}', '{$size}', {$reset})"
             );
         } else {
             $this->registerPlugin('select2');
