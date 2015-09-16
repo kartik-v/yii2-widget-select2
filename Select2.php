@@ -174,7 +174,7 @@ class Select2 extends \kartik\base\InputWidget
      */
     protected function embedAddon($input)
     {
-        if (empty($this->addon)) {
+        if (!isset($this->size) && empty($this->addon)) {
             return $input;
         }
         $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
