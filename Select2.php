@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.3
+ * @version 2.0.4
  */
 
 namespace kartik\select2;
@@ -180,9 +180,6 @@ class Select2 extends \kartik\base\InputWidget
         $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
         $size = isset($this->size) ? ' input-group-' . $this->size : '';
         Html::addCssClass($group, 'input-group' . $size);
-        if (empty($this->addon)) {
-            return Html::tag('div', $input, $group);
-        }
         $prepend = ArrayHelper::getValue($this->addon, 'prepend', '');
         $append = ArrayHelper::getValue($this->addon, 'append', '');
         if ($this->pluginLoading) {
