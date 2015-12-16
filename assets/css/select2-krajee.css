@@ -55,10 +55,6 @@
     opacity: 1;
 }
 
-.kv-hide-search .select2-search__field {
-    display: none;
-}
-
 /**
  * Selection Arrow
  */
