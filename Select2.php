@@ -248,7 +248,7 @@ class Select2 extends \kartik\base\InputWidget
         $id = $this->options['id'];
         $this->registerAssetBundle();
         // do not open dropdown when clear icon is pressed to clear value
-        $js = "\$('#{$id}').on('select2:opening', initS2Open).on('select2:unselecting', initS2Unselect);";
+        $js = "\$('#{$id}').on('select2:open', initS2Open).on('select2:unselecting', initS2Unselect);";
         $this->getView()->registerJs($js);
         $size = empty($this->addon) && $this->size !== self::MEDIUM ? 'input-' . $this->size : '';
         // register plugin

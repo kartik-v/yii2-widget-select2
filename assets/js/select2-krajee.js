@@ -49,9 +49,7 @@ var initS2Loading = function () {
         }
         if ($el.data('unselecting')) {
             $el.removeData('unselecting');
-            setTimeout(function () {
-                $el.select2('close').trigger('krajeeselect2:cleared');
-            }, 5);
+            $el.select2('close').trigger('krajeeselect2:cleared');
         }
     };
     initS2Unselect = function () {
