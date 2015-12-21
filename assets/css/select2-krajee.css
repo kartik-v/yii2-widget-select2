@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version 2.0.4
+ * @version 2.0.5
  *
  * Krajee Theme for Select2 (matches Bootstrap 3 styles)
  *
@@ -37,6 +37,11 @@
 
 .select2-container--krajee .select2-dropdown[dir="rtl"] .select2-search__field {
     background: #fff url('search.png') left 10px top 7px no-repeat;
+}
+
+.select2-container--krajee .select2-dropdown .select2-toggle-all {
+    display: inline-block;
+    margin: 5px 10px;
 }
 
 .select2-container--krajee .select2-search__field {
@@ -288,6 +293,9 @@
     overflow-x: hidden;
     margin-top: -1px;
 }
+.navbar {
+    z-index: 1055;
+}
 
 .select2-container--krajee .select2-dropdown--above {
     margin-top: 1px;
@@ -477,7 +485,7 @@
 
 .input-sm.select2-container--krajee[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
 .input-group-sm .select2-container--krajee[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
-    margin: 4px 5px 0 0;
+    margin: 5px 4px 0 0;
 }
 
 .input-sm.select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field,

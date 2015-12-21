@@ -12,12 +12,12 @@ namespace kartik\select2;
 use kartik\base\AssetBundle;
 
 /**
- * Classic Select2 theme
+ * Asset bundle for Select2 Additional CSS
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ThemeClassicAsset extends AssetBundle
+class Select2AddlAsset extends AssetBundle
 {
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class ThemeClassicAsset extends AssetBundle
     public function init()
     {
         $this->setSourcePath(__DIR__ . '/assets');
-        $this->setupAssets('css', ['css/select2-classic']);
+        $this->setupAssets('css', ['css/select2-addl']);
         parent::init();
     }
 }

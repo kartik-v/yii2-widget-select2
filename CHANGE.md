@@ -1,13 +1,27 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.0.5
+
+**Date:** 21-Dec-2015
+
+- (enh #69): Add ability to select and unselect all options for multiple select.
+- (enh #97): Allow maintaining order of pills selected for multiple select.
+- (enh #98): Various enhancements to the Select2 widget.
+    - Fix the plugin bug which does not close the dropdown when a value is cleared using the `x` clear indicator.
+    - Enhance widget to show bootstrap `success` and `error` states for active field trapped errors
+    - Better and more dynamic theming support
+    - Allow select2 to be reset correctly when parent form is reset (controlled by boolean property `changeOnReset`)
+    - (ref enh #69): Enable SELECT ALL and UNSELECT ALL to toggle all options for multiple select (new property `toggleAllSettings`). Allow complete configuration and styling of the same .
+    - (ref enh #97): Enable select2 dropdown to maintain the right order of tags/options for multiple select (new boolean property `maintainOrder` which defaults to `false`. Set this to `true` to maintain order)
+    - Consolidate and refactor code to just call one additional JS initialization script after plugin initialization. A new data-attribute `data-s2-options` is now stored in parent select input. This will store the global variable that will maintain the additional Json encoded options to be used by `initS2Loading` method.
+- (enh #99): Add messages and translations support.
+
 ## Version 2.0.4
 
-**Date:** 14-Dec-2015
+**Date:** 22-Sep-2015
 
 - (enh #67): Remove redundant code in embedAddon.
-- (enh #94): Update to latest release of Select2 plugin.
-- (enh #96): Enhance fix for clearing Select2 selection.
 
 ## Version 2.0.3
 
