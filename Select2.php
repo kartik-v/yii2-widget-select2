@@ -59,11 +59,6 @@ class Select2 extends InputWidget
     public $theme = self::THEME_KRAJEE;
 
     /**
-     * @var bool whether to trigger change for Select2 input on form reset so the Select2 value is rightly reset.
-     */
-    public $changeOnReset = true;
-
-    /**
      * @var string|array, the displayed text in the dropdown for the initial value when you do not set or provide
      *     `data` (e.g. using with ajax). If options['multiple'] is set to `true`, you can set this as an array of text
      *     descriptions for each item in the dropdown `value`.
@@ -71,19 +66,24 @@ class Select2 extends InputWidget
     public $initValueText;
 
     /**
+     * @var bool whether to trigger change for Select2 input on form reset so the Select2 value is rightly reset.
+     */
+    public $changeOnReset = true;
+
+    /**
      * @var bool whether to hide the search control and render it as a simple select. Defaults to `false`.
      */
     public $hideSearch = false;
-
-    /**
-     * @var bool whether to show the toggle all button for selection all options in a multiple select.
-     */
-    public $showToggleAll = true;
     
     /**
      * @var bool whether to maintain the order of tag / option selected for a multiple select
      */
     public $maintainOrder = false;
+
+    /**
+     * @var bool whether to show the toggle all button for selection all options in a multiple select.
+     */
+    public $showToggleAll = true;
 
     /**
      * @var array the toggle all button settings for selecting/unselecting all the options. This is applicable only for
