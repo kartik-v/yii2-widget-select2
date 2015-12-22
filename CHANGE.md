@@ -7,6 +7,9 @@ Change Log: `yii2-widget-select2`
 
 - (enh #100): Update Russian translations.
 - (enh #101): Consolidate asset bundles.
+- (enh #102): Enhance toggle all auto-reset based on each option clear, change, or form reset.
+- (enh #103): Enhance maintaining order of multi select tags.
+- (enh #104): Enhance Select2 custom init routines to work with jQuery, AMD and CommonJS.
 
 ## Version 2.0.5
 

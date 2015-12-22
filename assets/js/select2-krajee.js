@@ -13,7 +13,22 @@ var initS2ToggleAll = function () {
 }, initS2Open = function () {
 }, initS2Unselect = function () {
 };
-(function ($) {
+(function (factory) {
+    "use strict";
+    if (typeof define === 'function' && define.amd) { // jshint ignore:line
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory); // jshint ignore:line
+    } else { // noinspection JSUnresolvedVariable
+        if (typeof module === 'object' && module.exports) { // jshint ignore:line
+            // Node/CommonJS
+            // noinspection JSUnresolvedVariable
+            module.exports = factory(require('jquery')); // jshint ignore:line
+        } else {
+            // Browser globals
+            factory(window.jQuery);
+        }
+    }
+}(function ($) {
     "use strict";
     initS2ToggleAll = function (id) {
         var $el = $('#' + id), togId = '#' + 's2-togall-' + id, $tog = $(togId);
@@ -21,23 +36,34 @@ var initS2ToggleAll = function () {
             return;
         }
         $el.on('select2:open', function () {
-            if ($tog.parent().attr('id') === 'parent-' + togId) {
+            if ($tog.parent().attr('id') === 'parent-' + togId || !$el.attr('multiple')) {
                 return;
             }
             $('#select2-' + id + '-results').closest('.select2-dropdown').prepend($tog);
             $('#parent-' + togId).remove();
-        }).on('krajeeselect2:cleared', function () {
-            $tog.removeClass('s2-togall-select s2-togall-unselect').addClass('s2-togall-select');
+        }).on('change', function () {
+            if (!$el.attr('multiple')) {
+                return;
+            }
+            var tot = 0, sel = $el.val() ? $el.val().length : 0;
+            $tog.removeClass('s2-togall-select s2-togall-unselect');
+            $el.find('option:enabled').each(function() {
+                if ($(this).val().length) {
+                    tot++;
+                }
+            });
+            if (tot === 0 || sel !== tot) {
+                $tog.addClass('s2-togall-select');
+            } else {
+                $tog.addClass('s2-togall-unselect');
+            }
         });
         $tog.on('click', function () {
-            var isSelect = $tog.hasClass('s2-togall-select'), flag = true, disp = 'unselect', ev = 'selectall';
-            $tog.removeClass('s2-togall-select s2-togall-unselect');
+            var isSelect = $tog.hasClass('s2-togall-select'), flag = true, ev = 'selectall';
             if (!isSelect) {
                 flag = false;
-                disp = 'select';
                 ev = 'unselectall';
             }
-            $tog.addClass('s2-togall-' + disp);
             $el.find('option').each(function () {
                 var $opt = $(this);
                 if (!$opt.attr('disabled') && $opt.val().length) {
@@ -93,7 +119,7 @@ var initS2ToggleAll = function () {
         if (doReset) {
             $el.closest("form").on("reset", function () {
                 setTimeout(function () {
-                    $el.trigger("change");
+                    $el.trigger("change").trigger("krajeeselect2:reset");
                 }, 100);
             });
         }
@@ -101,12 +127,16 @@ var initS2ToggleAll = function () {
             initS2ToggleAll(id);
         }
         if (doOrder) {
-            $el.on('select2:select', function(evt) {
+            $el.on('select2:select', function (evt) {
                 var $selected = $(evt.params.data.element);
                 $selected.detach();
-                $el.append($selected).trigger('change');
+                $el.append($selected).trigger('select2:selection');
+                $el.find('option:not(:selected)').each(function() {
+                    $el.append($(this));
+                });
+                $el.trigger('select2:selection');
             });
         }
         $el.on('select2:open', initS2Open).on('select2:unselecting', initS2Unselect);
     };
-})(window.jQuery);
+}));
