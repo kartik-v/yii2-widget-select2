@@ -1,6 +1,13 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.0.6
+
+**Date:** 22-Dec-2015
+
+- (enh #100): Update Russian translations.
+- (enh #101): Consolidate asset bundles.
+
 ## Version 2.0.5
 
 **Date:** 21-Dec-2015

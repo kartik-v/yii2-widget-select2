@@ -311,7 +311,6 @@ class Select2 extends InputWidget
         $view = $this->getView();
         $lang = isset($this->language) ? $this->language : '';
         Select2Asset::register($view)->addLanguage($lang, '', 'js/i18n');
-        Select2AddlAsset::register($view);
         if (in_array($this->theme, self::$_inbuiltThemes)) {
             /**
              * @var AssetBundle $bundleClass
