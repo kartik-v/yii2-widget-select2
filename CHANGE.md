@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.0.7
+
+**Date:** 03-Jan-2015
+
+- (enh #108): Remove navbar styling from Krajee theme.
+
 ## Version 2.0.6
 
 **Date:** 22-Dec-2015

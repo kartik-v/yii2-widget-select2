@@ -293,9 +293,6 @@
     overflow-x: hidden;
     margin-top: -1px;
 }
-.navbar {
-    z-index: 1055;
-}
 
 .select2-container--krajee .select2-dropdown--above {
     margin-top: 1px;
