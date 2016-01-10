@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.6
+ * @version 2.0.7
  */
 
 namespace kartik\select2;
@@ -74,7 +74,7 @@ class Select2 extends InputWidget
      * @var bool whether to hide the search control and render it as a simple select. Defaults to `false`.
      */
     public $hideSearch = false;
-    
+
     /**
      * @var bool whether to maintain the order of tag / option selected for a multiple select
      */
@@ -127,6 +127,11 @@ class Select2 extends InputWidget
      * - placeholder: string, placeholder for the select item.
      */
     public $options = [];
+
+    /**
+     * @var string the name of the jQuery plugin
+     */
+    public $pluginName = 'select2';
 
     /**
      * @var string the variable that will store additional options for Select2 to add enhanced features after the
@@ -323,9 +328,11 @@ class Select2 extends InputWidget
     /**
      * Parses the variable for boolean value and returns a right JS expression
      *
+     * @param mixed $var the variable value to parse
+     *
      * @return JsExpression
      */
-    protected static function parseBool($var) 
+    protected static function parseBool($var)
     {
         return new JsExpression($var ? 'true' : 'false');
     }
@@ -348,6 +355,6 @@ class Select2 extends InputWidget
         $this->_s2OptionsVar = 's2options_' . hash('crc32', $options);
         $this->options['data-s2-options'] = $this->_s2OptionsVar;
         $this->getView()->registerJs("var {$this->_s2OptionsVar} = {$options};", View::POS_HEAD);
-        $this->registerPlugin('select2', "jQuery('#{$id}')", "initS2Loading('{$id}','{$this->_s2OptionsVar}')");
+        $this->registerPlugin($this->pluginName, "jQuery('#{$id}')", "initS2Loading('{$id}','{$this->_s2OptionsVar}')");
     }
 }

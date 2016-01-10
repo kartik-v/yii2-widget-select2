@@ -3,9 +3,12 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.0.7
 
-**Date:** 03-Jan-2015
+**Date:** 10-Jan-2016
 
 - (enh #108): Remove navbar styling from Krajee theme.
+- (enh #109): Add Hungarian Translations.
+- (enh #110): Enhance for PJAX based reinitialization. Complements enhancements in kartik-v/yii2-krajee-base#52 and kartik-v/yii2-krajee-base#53.
+
 
 ## Version 2.0.6
 
