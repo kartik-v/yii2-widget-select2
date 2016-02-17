@@ -10,6 +10,7 @@ Change Log: `yii2-widget-select2`
 - (enh #119): Add Slovak Translations.
 - (enh #124): Maintain order of selected values for an update scenario.
 - (enh #125): Update to latest release of the select2 plugin (v4.0.2-rc.1).
+- (enh #126): Enhance jQuery event handling for Krajee's additional features.
 
 ## Version 2.0.7
 
