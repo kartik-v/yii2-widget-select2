@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
- * @version 2.0.7
+ * @version 2.0.8
  *
  * Additional enhancements for Select2 widget extension for Yii 2.0.
  *
@@ -9,6 +9,7 @@
  * For more Yii related demos visit http://demos.krajee.com
  */
 var initS2ToggleAll = function () {
+}, initS2Order = function () {
 }, initS2Loading = function () {
 }, initS2Open = function () {
 }, initS2Unselect = function () {
@@ -47,7 +48,7 @@ var initS2ToggleAll = function () {
             }
             var tot = 0, sel = $el.val() ? $el.val().length : 0;
             $tog.removeClass('s2-togall-select s2-togall-unselect');
-            $el.find('option:enabled').each(function() {
+            $el.find('option:enabled').each(function () {
                 if ($(this).val().length) {
                     tot++;
                 }
@@ -92,6 +93,17 @@ var initS2ToggleAll = function () {
     initS2Unselect = function () {
         $(this).data('unselecting', true);
     };
+    initS2Order = function(id, val) {
+        var $el = $('#' + id);
+        if (val && val.length) {
+            $.each(val, function(k, v) {
+                $el.find('option[value="' + v + '"]').appendTo($el);
+            });
+            $el.find('option:not(:selected)').each(function () {
+                $el.append($(this));
+            });
+        }
+    };
     initS2Loading = function (id, optVar) {
         /**
          * @namespace opts.id
@@ -131,7 +143,7 @@ var initS2ToggleAll = function () {
                 var $selected = $(evt.params.data.element);
                 $selected.detach();
                 $el.append($selected).trigger('select2:selection');
-                $el.find('option:not(:selected)').each(function() {
+                $el.find('option:not(:selected)').each(function () {
                     $el.append($(this));
                 });
                 $el.trigger('select2:selection');

@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.7
+ * @version 2.0.8
  */
 
 namespace kartik\select2;
@@ -354,7 +354,12 @@ class Select2 extends InputWidget
         ]);
         $this->_s2OptionsVar = 's2options_' . hash('crc32', $options);
         $this->options['data-s2-options'] = $this->_s2OptionsVar;
-        $this->getView()->registerJs("var {$this->_s2OptionsVar} = {$options};", View::POS_HEAD);
+        $view = $this->getView();
+        $view->registerJs("var {$this->_s2OptionsVar} = {$options};", View::POS_HEAD);
+        if ($this->maintainOrder) {
+            $val = Json::encode(is_array($this->value) ? $this->value : [$this->value]);
+            $view->registerJs("initS2Order('{$id}',{$val});");
+        }
         $this->registerPlugin($this->pluginName, "jQuery('#{$id}')", "initS2Loading('{$id}','{$this->_s2OptionsVar}')");
     }
 }

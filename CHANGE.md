@@ -1,6 +1,16 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.0.8
+
+**Date:** 17-Feb-2016
+
+- Add branch alias for dev-master latest release.
+- (enh #117): Add Dutch Translations.
+- (enh #119): Add Slovak Translations.
+- (enh #124): Maintain order of selected values for an update scenario.
+- (enh #125): Update to latest release of the select2 plugin (v4.0.2-rc.1).
+
 ## Version 2.0.7
 
 **Date:** 10-Jan-2016
