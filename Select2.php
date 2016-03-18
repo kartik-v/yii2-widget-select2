@@ -187,7 +187,19 @@ class Select2 extends InputWidget
                 $this->data = [];
             } else {
                 $key = isset($this->value) ? $this->value : ($multiple ? [] : '');
-                $val = isset($this->initValueText) ? $this->initValueText : $key;
+                if (isset($this->initValueText)) {
+                    if ($this->initValueText instanceof \Closure) {
+                        if ($this->model instanceof Model) {
+                            $val = call_user_func($this->initValueText, $this->model);
+                        } else {
+                            $val = call_user_func($this->initValueText, null);
+                        }
+                    } else {
+                        $val = $this->initValueText;
+                    }
+                } else {
+                    $val = $key;
+                }
                 $this->data = $multiple ? array_combine($key, $val) : [$key => $val];
             }
         }
