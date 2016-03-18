@@ -192,7 +192,7 @@ class Select2 extends InputWidget
                         if ($this->model instanceof Model) {
                             $val = call_user_func($this->initValueText, $this->model);
                         } else {
-                            $val = call_user_func($this->initValueText);
+                            $val = call_user_func($this->initValueText, null);
                         }
                     } else {
                         $val = $this->initValueText;
