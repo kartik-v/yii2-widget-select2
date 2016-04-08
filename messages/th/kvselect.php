@@ -18,5 +18,5 @@
  */
 return [
     'Select all' => 'เลือกทั้งหมด',
-    'Unselect all' => 'ยกเลิกทั้งหมด',
+    'Unselect all' => 'ไม่เลือกทั้งหมด',
 ];
