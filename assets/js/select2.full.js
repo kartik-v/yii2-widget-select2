@@ -4086,7 +4086,7 @@ S2.define('select2/dropdown/attachBody',[
       self._detachPositioningHandler(container);
     });
 
-    this.$dropdownContainer.on('mousedown', function (evt) {
+    this.$dropdownContainer.on('mousedown focusin', function (evt) {
       evt.stopPropagation();
     });
   };
