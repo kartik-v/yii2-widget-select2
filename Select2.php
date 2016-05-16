@@ -178,6 +178,9 @@ class Select2 extends InputWidget
         if (!empty($this->addon) || empty($this->pluginOptions['width'])) {
             $this->pluginOptions['width'] = '100%';
         }
+        if( isset($this->options['hideSearch'])) {
+            $this->hideSearch = $this->options['hideSearch'];
+        }
         if ($this->hideSearch) {
             $this->pluginOptions['minimumResultsForSearch'] = new JsExpression('Infinity');
         }
