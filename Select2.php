@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.0.8
+ * @version 2.0.9
  */
 
 namespace kartik\select2;
@@ -186,7 +186,11 @@ class Select2 extends InputWidget
             if (!isset($this->value) && !isset($this->initValueText)) {
                 $this->data = [];
             } else {
-                $key = isset($this->value) ? $this->value : ($multiple ? [] : '');
+                if ($multiple) {
+                    $key = isset($this->value) && is_array($this->value) ? $this->value : [];
+                } else {
+                    $key = isset($this->value) ? $this->value : '';
+                }
                 $val = isset($this->initValueText) ? $this->initValueText : $key;
                 $this->data = $multiple ? array_combine($key, $val) : [$key => $val];
             }
