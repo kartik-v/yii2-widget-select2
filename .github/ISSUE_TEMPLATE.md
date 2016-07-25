@@ -43,7 +43,7 @@ Libraries
 
 ## Isolating the problem
 
-- [ ] This bug happens [on the widget demos page](https://demos.krajee.com/widget-details/select2)
+- [ ] This bug happens [on the widget demos page](http://demos.krajee.com/widget-details/select2)
 - [ ] The bug happens consistently across all tested browsers
 - [ ] This bug happens when using yii2-widget-select2 without other plugins
 - [ ] I can reproduce this bug in [a jsbin](https://jsbin.com/)
