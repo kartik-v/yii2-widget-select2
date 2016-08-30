@@ -226,7 +226,9 @@ class Select2 extends InputWidget
      */
     protected function renderToggleAll()
     {
-        if (!$this->options['multiple'] || !$this->showToggleAll) {
+        // disable select all toggle feature for a single select, or when the showToggleALl is false, or
+        // when one is generating an ajax based search for rendering the select2 options
+        if (!$this->options['multiple'] || !$this->showToggleAll || !empty($this->pluginOptions['ajax'])) {
             return;
         }
         $settings = array_replace_recursive([
@@ -373,7 +375,7 @@ class Select2 extends InputWidget
             'sizeCss' => empty($this->addon) && $this->size !== self::MEDIUM ? 'input-' . $this->size : '',
             'doReset' => static::parseBool($this->changeOnReset),
             'doToggle' => static::parseBool($isMultiple && $this->showToggleAll),
-            'doOrder' => static::parseBool($isMultiple && $this->maintainOrder)
+            'doOrder' => static::parseBool($isMultiple && $this->maintainOrder),
         ]);
         $this->_s2OptionsVar = 's2options_' . hash('crc32', $options);
         $this->options['data-s2-options'] = $this->_s2OptionsVar;
