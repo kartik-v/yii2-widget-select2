@@ -12,7 +12,7 @@ namespace kartik\select2;
 use kartik\base\AssetBundle;
 
 /**
- * Bootstrap Select2 theme
+ * Asset bundle for the bootstrap theme for [[Select2]] widget.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0

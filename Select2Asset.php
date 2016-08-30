@@ -12,7 +12,7 @@ namespace kartik\select2;
 use kartik\base\AssetBundle;
 
 /**
- * Asset bundle for Select2 Widget
+ * Asset bundle for [[Select2]] Widget.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0

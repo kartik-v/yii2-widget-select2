@@ -11,6 +11,7 @@
 var initS2ToggleAll = function () {
 }, initS2Order = function () {
 }, initS2Loading = function () {
+}, initS2Change = function () {
 }, initS2Open = function () {
 }, initS2Unselect = function () {
 };
@@ -74,9 +75,9 @@ var initS2ToggleAll = function () {
             $el.select2('close').trigger('krajeeselect2:' + ev).trigger('change');
         });
     };
-    initS2Open = function () {
-        var $el = $(this), $drop = $(".select2-container--open"),
-            cssClasses, i, $src = $el.parents("[class*='has-']");
+    initS2Change = function ($el) {
+        $el = $el || $(this);
+        var $drop = $(".select2-container--open"), cssClasses, i, $src = $el.parents("[class*='has-']");
         if ($src.length) {
             cssClasses = $src[0].className.split(/\s+/);
             for (i = 0; i < cssClasses.length; i++) {
@@ -85,6 +86,9 @@ var initS2ToggleAll = function () {
                 }
             }
         }
+    };
+    initS2Open = function () {
+        var $el = $(this);
         if ($el.data('unselecting')) {
             $el.removeData('unselecting');
             $el.select2('close').trigger('krajeeselect2:cleared');
@@ -93,10 +97,10 @@ var initS2ToggleAll = function () {
     initS2Unselect = function () {
         $(this).data('unselecting', true);
     };
-    initS2Order = function(id, val) {
+    initS2Order = function (id, val) {
         var $el = $('#' + id);
         if (val && val.length) {
-            $.each(val, function(k, v) {
+            $.each(val, function (k, v) {
                 $el.find('option[value="' + v + '"]').appendTo($el);
             });
             $el.find('option:not(:selected)').appendTo($el);
@@ -147,6 +151,8 @@ var initS2ToggleAll = function () {
                 $el.append($selected).find('option:not(:selected)').appendTo($el);
             });
         }
-        $el.on('select2:open.krajees2', initS2Open).on('select2:unselecting.krajees2', initS2Unselect);
+        $el.on('change.krajees2', function () {
+            setTimeout(initS2Change, 500);
+        }).on('select2:open.krajees2', initS2Open).on('select2:unselecting.krajees2', initS2Unselect);
     };
 }));

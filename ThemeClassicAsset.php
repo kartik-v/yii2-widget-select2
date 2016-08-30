@@ -12,7 +12,7 @@ namespace kartik\select2;
 use kartik\base\AssetBundle;
 
 /**
- * Classic Select2 theme
+ * Asset bundle for the classic theme for [[Select2]] widget.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0

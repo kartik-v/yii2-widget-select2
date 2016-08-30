@@ -3,7 +3,7 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.0.9
 
-**Date:** 18-Aug-2016
+**Date:** 30-Aug-2016
 
 - (enh #131): Add Estonian Translations.
 - (enh #141): Add Thai Translations.
@@ -14,6 +14,7 @@ Change Log: `yii2-widget-select2`
 - Update to latest release of select2 plugin.
 - (enh #165): Add Chinese Traditional Translations.
 - (enh #166): Add Portugese Translations.
+- (enh #170): Enhance select2 validation for `has-success` and `has-error` states.
 
 ## Version 2.0.8
 
