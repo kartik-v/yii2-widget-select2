@@ -15,8 +15,10 @@
  * of the guide for details.
  *
  * NOTE: this file must be saved in UTF-8 encoding.
+ *
+ * @author: Lorenzo Milesi <maxxer@yetopent.it>
  */
 return [
-    'Select all' => '',
-    'Unselect all' => '',
+    'Select all' => 'Seleziona tutti',
+    'Unselect all' => 'Deseleziona tutti',
 ];
