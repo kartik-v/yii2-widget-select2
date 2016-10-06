@@ -19,6 +19,6 @@
  * @author Vishal Bhalodiya <bhalodiyavishal46@gmail.com>
  */
 return [
-    'Select all' => '',
-    'Unselect all' => '',
+    'Select all' => 'सभी का चयन करें',
+    'Unselect all' => 'सभी का चयन रद्द करें',
 ];
