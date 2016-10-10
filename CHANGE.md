@@ -5,6 +5,7 @@ Change Log: `yii2-widget-select2`
 
 **Date:** 30-Aug-2016
 
+- (enh #178): Add Hindi and Gujarati Translations.
 - (enh #131): Add Estonian Translations.
 - (enh #141): Add Thai Translations.
 - (enh #150): Add Latvian Translations.
