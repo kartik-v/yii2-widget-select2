@@ -151,6 +151,11 @@ class Select2 extends InputWidget
      * @var string the name of the jQuery plugin
      */
     public $pluginName = 'select2';
+   /**
+     *
+     * @var char Implements open selector with accesskey
+     */
+    public $accesskey = null;
 
     /**
      * @var string the variable that will store additional options for Select2 to add enhanced features after the
@@ -249,6 +254,14 @@ class Select2 extends InputWidget
         $labels = Html::tag('span', $settings['selectLabel'], $sOptions) .
             Html::tag('span', $settings['unselectLabel'], $uOptions);
         $out = Html::tag('span', $labels, $options);
+        if (!is_null($this->accesskey)) {
+            $accesskey = substr($this->accesskey, 0, 1);
+            echo Html::tag('button', '', [
+                'accesskey' => $accesskey,
+                'style' => 'background: transparent;border: none !important;font-size:0;',
+                'onfocus' => '$("#' . $this->options['id'] . '").select2("open");'
+            ]);
+        }        
         echo Html::tag('span', $out, ['id' => 'parent-' . $options['id'], 'style' => 'display:none']);
     }
 
