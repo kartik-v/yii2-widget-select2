@@ -1,5 +1,5 @@
 /*!
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
  * @version 2.0.9
  *
  * Additional enhancements for Select2 widget extension for Yii 2.0.
@@ -12,7 +12,6 @@ var initS2ToggleAll = function () {
 }, initS2Order = function () {
 }, initS2Loading = function () {
 }, initS2Change = function () {
-}, initS2Open = function () {
 }, initS2Unselect = function () {
 };
 (function (factory) {
@@ -87,15 +86,13 @@ var initS2ToggleAll = function () {
             }
         }
     };
-    initS2Open = function () {
-        var $el = $(this);
-        if ($el.data('unselecting')) {
-            $el.removeData('unselecting');
-            $el.select2('close').trigger('krajeeselect2:cleared');
-        }
-    };
     initS2Unselect = function () {
-        $(this).data('unselecting', true);
+        var $el = $(this), opts = $el.data('select2').options;
+        opts.set('disabled', true);
+        setTimeout(function() {
+            opts.set('disabled', false);
+            $el.trigger('krajeeselect2:cleared');
+        }, 1);
     };
     initS2Order = function (id, val) {
         var $el = $('#' + id);
@@ -153,6 +150,6 @@ var initS2ToggleAll = function () {
         }
         $el.on('change.krajees2', function () {
             setTimeout(initS2Change, 500);
-        }).on('select2:open.krajees2', initS2Open).on('select2:unselecting.krajees2', initS2Unselect);
+        }).on('select2:unselecting.krajees2', initS2Unselect);
     };
 }));
