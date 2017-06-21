@@ -210,12 +210,10 @@ class Select2 extends InputWidget
             if (!isset($this->value) && !isset($this->initValueText)) {
                 $this->data = [];
             } else {
-                if ($multiple) {
-                    $key = isset($this->value) && is_array($this->value) ? $this->value : [];
-                } else {
-                    $key = isset($this->value) ? $this->value : '';
-                }
+                $key = isset($this->value) ? $this->value : ($multiple ? [] : '');
+                $key = empty($key) ? ($multiple ? [] : '') : $this->value;
                 $val = isset($this->initValueText) ? $this->initValueText : $key;
+
                 $this->data = $multiple ? array_combine($key, $val) : [$key => $val];
             }
         }
