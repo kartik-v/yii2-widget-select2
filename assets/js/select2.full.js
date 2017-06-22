@@ -1029,22 +1029,26 @@ S2.define('select2/results',[
       self.showLoading(params);
     });
 
-    container.on('select', function () {
+    container.on('select', function (params) {
       if (!container.isOpen()) {
         return;
       }
 
       self.setClasses();
-      self.highlightFirstItem();
+        if(!params.originalEvent.ctrlKey) {
+            self.highlightFirstItem();
+        }
     });
 
-    container.on('unselect', function () {
+    container.on('unselect', function (params) {
       if (!container.isOpen()) {
         return;
       }
 
       self.setClasses();
-      self.highlightFirstItem();
+        if(!params.originalEvent.ctrlKey) {
+            self.highlightFirstItem();
+        }
     });
 
     container.on('open', function () {
