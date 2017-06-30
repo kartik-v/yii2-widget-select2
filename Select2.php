@@ -194,7 +194,7 @@ class Select2 extends InputWidget
     public function renderWidget()
     {
         $this->initI18N(__DIR__);
-        $this->pluginOptions['theme'] = $this->theme;
+        $this->theme = !empty($this->pluginOptions['theme']) ? $this->pluginOptions['theme'] : $this->theme;
         $multiple = ArrayHelper::getValue($this->pluginOptions, 'multiple', false);
         unset($this->pluginOptions['multiple']);
         $multiple = ArrayHelper::getValue($this->options, 'multiple', $multiple);
