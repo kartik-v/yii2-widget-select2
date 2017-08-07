@@ -1,6 +1,13 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.0
+
+**Date:** 07-Aug-2017
+
+- (enh #220): Correct array combine for multiple select.
+- (enh #215): Add Armenian translations.
+
 ## Version 2.0.9
 
 **Date:** 12-Apr-2017
