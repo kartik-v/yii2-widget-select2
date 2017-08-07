@@ -216,7 +216,7 @@ class Select2 extends InputWidget
                     $key = isset($this->value) ? $this->value : '';
                 }
                 $val = isset($this->initValueText) ? $this->initValueText : $key;
-                $this->data = $multiple ? array_combine($key, $val) : [$key => $val];
+                $this->data = $multiple ?  array_combine((array)$key, (array)$val) : [$key => $val];
             }
         }
         Html::addCssClass($this->options, 'form-control');
