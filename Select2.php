@@ -232,8 +232,7 @@ class Select2 extends InputWidget
     protected function renderToggleAll()
     {
         // disable select all toggle feature for a single select, or when the showToggleALl is false, or
-        // when one is generating an ajax based search for rendering the select2 options
-        if (!$this->options['multiple'] || !$this->showToggleAll || !empty($this->pluginOptions['ajax'])) {
+        if (!$this->options['multiple'] || !$this->showToggleAll ) {
             return;
         }
         $settings = array_replace_recursive([
