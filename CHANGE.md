@@ -1,6 +1,17 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.1
+
+**Date:** 24-Nov-2017
+
+- Updated code of conduct.
+- (enh #240, #233, #212): Update to latest release v4.0.5 of the plugin.
+- (enh #236): Enable Select All with Ajax Loading .
+- (enh #231): Update Chinese translations.
+- (enh #225, #224): Add Finnish translations.
+- (bug #220): Correct multiple ajax select bug.
+
 ## Version 2.1.0
 
 **Date:** 07-Aug-2017

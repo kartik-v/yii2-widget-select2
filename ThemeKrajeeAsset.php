@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2017
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.0
+ * @version 2.1.1
  */
 
 namespace kartik\select2;

@@ -32,7 +32,7 @@ to the ```require``` section of your `composer.json` file.
 
 ## Latest Release
 
-> NOTE: The latest version of the module is v2.1.0. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-select2/blob/master/CHANGE.md) for details.
+> NOTE: The latest version of the module is v2.1.1. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-select2/blob/master/CHANGE.md) for details.
 
 The widget has a major version revamp with v2.0. This release includes updates to use Select2 plugin release v4.0. Select2 release v4.0 is a major rewrite over Select2 v3.x and hence quite a few enhancements or changes should be expected. To use the earlier plugin release v3.5.2, you must point it to the [v1.0.1 release](https://github.com/kartik-v/yii2-widget-select2/releases/tag/v1.0.1) of the widget.
 
