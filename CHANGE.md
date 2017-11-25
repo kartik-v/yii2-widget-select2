@@ -3,8 +3,9 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.1.1
 
-**Date:** 24-Nov-2017
+**Date:** 25-Nov-2017
 
+- (enh #241): Enhancements to Select2 Krajee theme styles.
 - Updated code of conduct.
 - (enh #240, #233, #212): Update to latest release v4.0.5 of the plugin.
 - (enh #236): Enable Select All with Ajax Loading .
