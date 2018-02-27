@@ -59,6 +59,9 @@ var initS2ToggleAll = function () {
                 $tog.addClass('s2-togall-unselect');
             }
         });
+
+        $el.trigger('change.krajeeselect2');
+
         $tog.off('.krajees2').on('click.krajees2', function () {
             var isSelect = $tog.hasClass('s2-togall-select'), flag = true, ev = 'selectall';
             if (!isSelect) {
