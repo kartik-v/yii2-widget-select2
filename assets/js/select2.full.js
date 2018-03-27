@@ -5366,6 +5366,10 @@ S2.define('select2/core',[
     });
 
     this.on('keypress', function (evt) {
+      if (self.$container.hasClass('select2-container--disabled')) {
+        return false;
+      }
+      
       var key = evt.which;
 
       if (self.isOpen()) {
