@@ -383,7 +383,7 @@ class Select2 extends InputWidget
         $this->registerAssetBundle();
         $isMultiple = isset($this->options['multiple']) && $this->options['multiple'];
         $options = Json::encode([
-            'themeCss' => ".select2-container--{$this->theme}",
+            'themeCss' => ".select2-container-{$this->theme}",
             'sizeCss' => empty($this->addon) && $this->size !== self::MEDIUM ? 'input-' . $this->size : '',
             'doReset' => static::parseBool($this->changeOnReset),
             'doToggle' => static::parseBool($isMultiple && $this->showToggleAll),
