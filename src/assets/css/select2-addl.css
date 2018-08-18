@@ -1,0 +1,43 @@
+/*!
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
+ * @version 2.1.2
+ *
+ * Additional CSS for Select2 for extra functionalities added by Krajee
+ *
+ * Author: Kartik Visweswaran
+ * For more JQuery plugins visit http://plugins.krajee.com
+ * For more Yii related demos visit http://demos.krajee.com
+ */
+.s2-togall-select .s2-unselect-label,
+.s2-togall-unselect .s2-select-label {
+    display: none;
+}
+
+.s2-togall-button {
+    display: inline-block;
+    font-weight: 400;
+    color: #337ab7;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.s2-togall-button:focus, .s2-togall-button:hover {
+    color: #23527c;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.s2-togall-select .s2-select-label,
+.s2-togall-unselect .s2-unselect-label {
+    display: inline;
+}
+
+.s2-select-label, .s2-unselect-label {
+    line-height: 1.1;
+    font-size: 13px;
+}
+
+.s2-togall-button .s2-select-label i,
+.s2-togall-button .s2-unselect-label i {
+    margin: auto 0.25rem;
+}

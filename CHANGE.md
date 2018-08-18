@@ -3,8 +3,10 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.1.2
 
-**Date:** 24-Feb-2018
+**Date:** 17-Aug-2018
 
+- Reorganize all source code in `src` directory.
+- (enh #268): Add Bootstrap 4.x Support.
 - (enh #249): Update German Translations.
 - (enh #242): Update Marathi Translations.
 - (enh #246, #247, #253): Fix Select All behavior for multiple select.
