@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.2
+ * @version 2.1.3
  */
 
 namespace kartik\select2;
@@ -12,6 +12,7 @@ namespace kartik\select2;
 use kartik\base\AddonTrait;
 use kartik\base\InputWidget;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\ArrayHelper;
@@ -22,7 +23,7 @@ use yii\web\View;
 /**
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This input widget is a jQuery based replacement for
  * select boxes. It supports searching, remote data sets, and infinite scrolling of results. The widget is specially
- * styled for Bootstrap 3.
+ * styled for Bootstrap 3.x and Bootstrap 4.x.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -190,6 +191,8 @@ class Select2 extends InputWidget
 
     /**
      * @inheritdoc
+     * @throws \ReflectionException
+     * @throws \yii\base\InvalidConfigException
      */
     public function run()
     {
@@ -199,6 +202,8 @@ class Select2 extends InputWidget
 
     /**
      * Initializes and renders the widget
+     * @throws \ReflectionException
+     * @throws \yii\base\InvalidConfigException
      */
     public function renderWidget()
     {
@@ -213,7 +218,7 @@ class Select2 extends InputWidget
         $this->options['multiple'] = $multiple;
         if (empty($this->pluginOptions['width'])) {
             if ($this->theme !== self::THEME_KRAJEE_BS4) {
-                $this->pluginOptions['width'] =  '100%';
+                $this->pluginOptions['width'] = '100%';
             } elseif (empty($this->addon)) {
                 $this->pluginOptions['width'] = 'auto';
             }
@@ -243,11 +248,12 @@ class Select2 extends InputWidget
 
     /**
      * Initializes and render the toggle all button
+     * @throws \yii\base\InvalidConfigException
      */
     protected function renderToggleAll()
     {
         // disable select all toggle feature for a single select, or when the showToggleALl is false, or
-        if (!$this->options['multiple'] || !$this->showToggleAll ) {
+        if (!$this->options['multiple'] || !$this->showToggleAll) {
             return;
         }
         $unchecked = '<i class="glyphicon glyphicon-unchecked"></i>';
@@ -261,7 +267,7 @@ class Select2 extends InputWidget
             'unselectLabel' => $checked . Yii::t('kvselect', 'Unselect all'),
             'selectOptions' => [],
             'unselectOptions' => [],
-            'options' => ['class' => 's2-togall-button']
+            'options' => ['class' => 's2-togall-button'],
         ], $this->toggleAllSettings);
         $sOptions = $settings['selectOptions'];
         $uOptions = $settings['unselectOptions'];
@@ -279,7 +285,7 @@ class Select2 extends InputWidget
             echo Html::tag('button', '', [
                 'accesskey' => $accesskey,
                 'style' => 'background: transparent;border: none !important;font-size:0;',
-                'onfocus' => '$("#' . $this->options['id'] . '").select2("open");'
+                'onfocus' => '$("#' . $this->options['id'] . '").select2("open");',
             ]);
         }
         echo Html::tag('span', $out, ['id' => 'parent-' . $options['id'], 'style' => 'display:none']);
@@ -313,6 +319,7 @@ class Select2 extends InputWidget
      * @param string $input
      *
      * @return string
+     * @throws InvalidConfigException
      */
     protected function embedAddon($input)
     {
@@ -347,6 +354,7 @@ class Select2 extends InputWidget
     /**
      * Renders the source Input for the Select2 plugin. Graceful fallback to a normal HTML select dropdown or text
      * input - in case JQuery is not supported by the browser
+     * @throws InvalidConfigException
      */
     protected function renderInput()
     {
