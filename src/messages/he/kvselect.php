@@ -17,6 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Select all' => 'Επιλογή όλων',
-    'Unselect all' => 'Αποεπιλογή όλων',
+    'Select all' => 'בחר הכל',
+    'Unselect all' => 'נקה הכל',
 ];
