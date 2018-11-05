@@ -1,6 +1,14 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.4
+
+**Date:** _under development_
+
+- Update README.
+- (enh #275): Add Hebrew Translations.
+- (enh #272): Update Greek Translations.
+
 ## Version 2.1.3
 
 **Date:** 07-Sep-2018
