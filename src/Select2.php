@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.3
+ * @version 2.1.4
  */
 
 namespace kartik\select2;
@@ -253,7 +253,8 @@ class Select2 extends InputWidget
     protected function renderToggleAll()
     {
         // disable select all toggle feature for a single select, or when the showToggleALl is false, or
-        if (!$this->options['multiple'] || !$this->showToggleAll) {
+        // when one is generating an ajax based search for rendering the select2 options
+        if (!$this->options['multiple'] || !$this->showToggleAll || !empty($this->pluginOptions['ajax'])) {
             return;
         }
         $unchecked = '<i class="glyphicon glyphicon-unchecked"></i>';

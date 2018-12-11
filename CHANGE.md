@@ -5,6 +5,7 @@ Change Log: `yii2-widget-select2`
 
 **Date:** _under development_
 
+- (enh #168, #236, #246, #247, #253): Proper revert of behavior for select all toggle visibility.
 - Update README.
 - (enh #275): Add Hebrew Translations.
 - (enh #272): Update Greek Translations.
