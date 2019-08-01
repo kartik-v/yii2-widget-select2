@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
  * @version 2.1.4
@@ -24,7 +24,7 @@ class ThemeKrajeeBs4Asset extends ThemeAsset
      */
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/assets');
+        $this->initTheme();
         $this->setupAssets('css', ['css/select2-krajee-bs4']);
         parent::init();
     }

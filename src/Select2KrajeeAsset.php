@@ -12,20 +12,28 @@ namespace kartik\select2;
 use kartik\base\AssetBundle;
 
 /**
- * Asset bundle for the classic theme for [[Select2]] widget.
+ * Krajee asset bundle for [[Select2]] Widget.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ThemeClassicAsset extends ThemeAsset
+class Select2KrajeeAsset extends AssetBundle
 {
+    /**
+     * @inheritdoc
+     */
+    public $depends = [
+        'kartik\select2\Select2Asset'
+    ];
+
     /**
      * @inheritdoc
      */
     public function init()
     {
-        $this->initTheme();
-        $this->setupAssets('css', ['css/select2-classic']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('css', ['css/select2-addl']);
+        $this->setupAssets('js', ['js/select2-krajee']);
         parent::init();
     }
 }

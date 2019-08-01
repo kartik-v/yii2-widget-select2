@@ -1,16 +1,17 @@
 <h1 align="center">
     <a href="http://demos.krajee.com" title="Krajee Demos" target="_blank">
-        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/krajee-logo-b.png" alt="Krajee Logo"/>
+        <img src="http://kartik-v.github.io/yii2-widget-select2-samples/samples/krajee-logo-b.png" alt="Krajee Logo"/>
     </a>
     <br>
     yii2-widget-select2
     <hr>
     <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DTP3NZQ6G2AYU"
        title="Donate via Paypal" target="_blank">
-        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/donate.png" alt="Donate"/>
+        <img src="http://kartik-v.github.io/yii2-widget-select2-samples/samples/donate.png" alt="Donate"/>
     </a>
 </h1>
 
+[![Financial Contributors on Open Collective](https://opencollective.com/yii2-widget-select2/all/badge.svg?label=financial+contributors)](https://opencollective.com/yii2-widget-select2)
 [![Stable Version](https://poser.pugx.org/kartik-v/yii2-widget-select2/v/stable)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
 [![Unstable Version](https://poser.pugx.org/kartik-v/yii2-widget-select2/v/unstable)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
 [![License](https://poser.pugx.org/kartik-v/yii2-widget-select2/license)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
@@ -86,6 +87,36 @@ echo Select2::widget([
     'options' => ['multiple' => true, 'placeholder' => 'Select states ...']
 ]);
 ```
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](.github/CONTRIBUTING.md)].
+<a href="https://github.com/kartik-v/yii2-widget-select2/graphs/contributors"><img src="https://opencollective.com/yii2-widget-select2/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/yii2-widget-select2/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/yii2-widget-select2"><img src="https://opencollective.com/yii2-widget-select2/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/yii2-widget-select2/contribute)]
+
+<a href="https://opencollective.com/yii2-widget-select2/organization/0/website"><img src="https://opencollective.com/yii2-widget-select2/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/1/website"><img src="https://opencollective.com/yii2-widget-select2/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/2/website"><img src="https://opencollective.com/yii2-widget-select2/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/3/website"><img src="https://opencollective.com/yii2-widget-select2/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/4/website"><img src="https://opencollective.com/yii2-widget-select2/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/5/website"><img src="https://opencollective.com/yii2-widget-select2/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/6/website"><img src="https://opencollective.com/yii2-widget-select2/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/7/website"><img src="https://opencollective.com/yii2-widget-select2/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/8/website"><img src="https://opencollective.com/yii2-widget-select2/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/yii2-widget-select2/organization/9/website"><img src="https://opencollective.com/yii2-widget-select2/organization/9/avatar.svg"></a>
 
 ## License
 

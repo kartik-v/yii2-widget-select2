@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
  * @version 2.1.4
@@ -12,7 +12,7 @@ namespace kartik\select2;
 use kartik\base\AssetBundle;
 
 /**
- * Asset bundle for [[Select2]] Widget.
+ * Asset bundle for [[Select2]] Widget. Includes assets from select2 plugin library.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -24,9 +24,9 @@ class Select2Asset extends AssetBundle
      */
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/assets');
-        $this->setupAssets('css', ['css/select2', 'css/select2-addl']);
-        $this->setupAssets('js', ['js/select2.full', 'js/select2-krajee']);
+        $this->setSourcePath('@vendor/select2/select2/dist');
+        $this->setupAssets('css', ['css/select2']);
+        $this->setupAssets('js', ['js/select2.full']);
         parent::init();
     }
 }
