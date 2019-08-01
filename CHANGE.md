@@ -3,10 +3,10 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.1.4
 
-**Date:** _under development_
+**Date:** 01-Aug-2019
 
 - (enh #288): Modify to read select2 plugin assets from its packagist repository.
-- (enh #286): Fix demos page for ajax Remote Data Example Broken.
+- (enh #286): Fix demos page for broken _ajax remote data example_.
 - (enh #275): Add Hebrew Translations.
 - (enh #272): Update Greek Translations.
 - Update README.

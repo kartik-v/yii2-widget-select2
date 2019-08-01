@@ -1,23 +1,28 @@
 <h1 align="center">
     <a href="http://demos.krajee.com" title="Krajee Demos" target="_blank">
-        <img src="http://kartik-v.github.io/yii2-widget-select2-samples/samples/krajee-logo-b.png" alt="Krajee Logo"/>
+        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/krajee-logo-b.png" alt="Krajee Logo"/>
     </a>
     <br>
     yii2-widget-select2
     <hr>
     <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DTP3NZQ6G2AYU"
        title="Donate via Paypal" target="_blank">
-        <img src="http://kartik-v.github.io/yii2-widget-select2-samples/samples/donate.png" alt="Donate"/>
+        <img src="http://kartik-v.github.io/bootstrap-fileinput-samples/samples/donate.png" alt="Donate"/>
     </a>
 </h1>
+
+<div align="center">
 
 [![Financial Contributors on Open Collective](https://opencollective.com/yii2-widget-select2/all/badge.svg?label=financial+contributors)](https://opencollective.com/yii2-widget-select2)
 [![Stable Version](https://poser.pugx.org/kartik-v/yii2-widget-select2/v/stable)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
 [![Unstable Version](https://poser.pugx.org/kartik-v/yii2-widget-select2/v/unstable)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
 [![License](https://poser.pugx.org/kartik-v/yii2-widget-select2/license)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
+
 [![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/downloads)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
 [![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/d/monthly)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
 [![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-widget-select2/d/daily)](https://packagist.org/packages/kartik-v/yii2-widget-select2)
+
+</div>
 
 This is the Select2 widget and a Yii 2 enhanced wrapper for the [Select2 jQuery plugin](http://ivaynberg.github.io/select2). This input widget is a jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results. The widget is specially styled for Bootstrap 3 and offers a few enhancements not available in the source plugin. The widget allows graceful degradation to a normal HTML select or text input, if the browser does not support JQuery.
 
@@ -120,4 +125,4 @@ Support this project with your organization. Your logo will show up here with a 
 
 ## License
 
-**yii2-widget-select2** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
+**yii2-widget-select2** is released under the BSD-3-Clause License. See the bundled `LICENSE.md` for details.
