@@ -65,13 +65,7 @@ var initS2ToggleAll = function () {
                 flag = false;
                 ev = 'unselectall';
             }
-            
-            $('#select2-' + id + '-results').find('[role="treeitem"]').each(function (k,v) {
-                var elemData = $(v).data('data'),
-                    optElem = typeof elemData.element !== "undefined" ? $(elemData.element) : [];
-                if(optElem.length) optElem.prop('selected', flag);
-            });
-            
+            $el.find('option:not([disabled])').prop('selected', flag);            
             $el.select2('close').trigger('krajeeselect2:' + ev).trigger('change');
         });
     };
