@@ -361,7 +361,7 @@ class Select2 extends InputWidget
     {
         if ($this->pluginLoading) {
             $this->_loadIndicator = '<div class="kv-plugin-loading loading-' . $this->options['id'] . '">&nbsp;</div>';
-            Html::addCssStyle($this->options, 'display:none');
+            Html::addCssStyle($this->options, 'display:hidden');
         }
         Html::addCssClass($this->options, 'form-control');
         $input = $this->getInput('dropDownList', true);
