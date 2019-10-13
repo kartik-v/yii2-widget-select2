@@ -227,16 +227,16 @@ class Select2 extends InputWidget
             $this->pluginOptions['minimumResultsForSearch'] = new JsExpression('Infinity');
         }
         $this->initPlaceholder();
-        if (!isset($this->data)) {
-            if (!isset($this->value) && !isset($this->initValueText)) {
-                $this->data = [];
+        if (!$this->data) {
+            if (!$this->value && !$this->initValueText) {
+                $this->data = ['' => ''];
             } else {
                 if ($multiple) {
-                    $key = isset($this->value) && is_array($this->value) ? $this->value : [];
+                    $key = $this->value && is_array($this->value) ? $this->value : [];
                 } else {
-                    $key = isset($this->value) ? $this->value : '';
+                    $key = $this->value ? $this->value : '';
                 }
-                $val = isset($this->initValueText) ? $this->initValueText : $key;
+                $val = $this->initValueText ? $this->initValueText : $key;
                 $this->data = $multiple ? array_combine((array)$key, (array)$val) : [$key => $val];
             }
         }
