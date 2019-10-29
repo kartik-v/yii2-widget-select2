@@ -64,6 +64,10 @@ class Select2 extends InputWidget
      * Select2 Krajee theme (default for BS4)
      */
     const THEME_KRAJEE_BS4 = 'krajee-bs4';
+    /**
+     * Select2 Material by Faeez
+     */
+    const THEME_MATERIAL = 'material';
 
     /**
      * @var array $data the option data items. The array keys are option values, and the array values are the
@@ -187,6 +191,7 @@ class Select2 extends InputWidget
         self::THEME_BOOTSTRAP,
         self::THEME_KRAJEE,
         self::THEME_KRAJEE_BS4,
+        self::THEME_MATERIAL,
     ];
 
     /**
@@ -237,7 +242,7 @@ class Select2 extends InputWidget
                     $key = isset($this->value) ? $this->value : '';
                 }
                 $val = isset($this->initValueText) ? $this->initValueText : $key;
-                $this->data = $multiple ? array_combine((array)$key, (array)$val) : [$key => $val];
+                $this->data = $multiple ? array_combine((array) $key, (array) $val) : [$key => $val];
             }
         }
         $this->initLanguage('language', true);
