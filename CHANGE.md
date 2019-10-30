@@ -1,6 +1,15 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.5
+
+**Date:** _under development_
+
+- (enh #300): Add Material Theme.
+- (enh #299): Add Czech Translations.
+- (enh #298, #289): Fix empty options.
+- (enh #296): Change source input display from none to intelligent visibility hidden.
+
 ## Version 2.1.4
 
 **Date:** 02-Sep-2019
