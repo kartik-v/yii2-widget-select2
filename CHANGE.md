@@ -5,6 +5,9 @@ Change Log: `yii2-widget-select2`
 
 **Date:** 31-Oct-2019
 
+- (enh #301): Enhancements to multiple select RTL input and select all toggle.
+    - Intelligent filtered select all and unselect all that validates what all to select or unselect based on select2 search filter field typed
+    - Better styling of RTL multiple input
 - (enh #300): Add Material Theme.
 - (enh #299): Add Czech Translations.
 - (enh #298, #289): Fix empty options.
