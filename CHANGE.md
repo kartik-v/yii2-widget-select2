@@ -3,7 +3,7 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.1.5
 
-**Date:** _under development_
+**Date:** 31-Oct-2019
 
 - (enh #300): Add Material Theme.
 - (enh #299): Add Czech Translations.
