@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.5
+ * @version 2.1.6
  */
 
 namespace kartik\select2;
@@ -236,8 +236,9 @@ class Select2 extends InputWidget
         if (empty($this->data)) {
             $emptyValue = !isset($this->value) || $this->value === '';
             $emptyInitText = !isset($this->initValueText) || $this->initValueText === '';
+            $emptyPH = !isset($this->pluginOptions['placeholder']);
             if ($emptyValue && $emptyInitText) {
-                $this->data = ['' => ''];
+                $this->data = $emptyPH ? ['' => ''] : [];
             } else {
                 if ($multiple) {
                     $key = !$emptyValue && is_array($this->value) ? $this->value : [];
@@ -245,7 +246,7 @@ class Select2 extends InputWidget
                     $key = !$emptyValue ? $this->value : '';
                 }
                 $val = !$emptyInitText ? $this->initValueText : $key;
-                $this->data = $multiple ? array_combine((array)$key, (array)$val) : [$key => $val];
+                $this->data = $multiple ? array_combine((array)$key, (array)$val) : (($emptyPH && $key !== '') ? [$key => $val] : []);
             }
         }
         $this->initLanguage('language', true);

@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.6
+
+**Date:** 01-Nov-2019
+
+- (enh #298, #289): Fix empty options when placeholder is set.
+
 ## Version 2.1.5
 
 **Date:** 31-Oct-2019
