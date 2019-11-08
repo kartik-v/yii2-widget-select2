@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.6
+ * @version 2.1.7
  */
 
 namespace kartik\select2;
@@ -236,17 +236,21 @@ class Select2 extends InputWidget
         if (empty($this->data)) {
             $emptyValue = !isset($this->value) || $this->value === '';
             $emptyInitText = !isset($this->initValueText) || $this->initValueText === '';
-            $emptyPH = !isset($this->pluginOptions['placeholder']);
+            $emptyData = !isset($this->pluginOptions['placeholder']) ? ['' => '']: [];
             if ($emptyValue && $emptyInitText) {
-                $this->data = $emptyPH ? ['' => ''] : [];
+                $this->data = $emptyData;
             } else {
                 if ($multiple) {
-                    $key = !$emptyValue && is_array($this->value) ? $this->value : [];
+                    $key = !$emptyValue && is_array($this->value) ? $this->value : '';
                 } else {
                     $key = !$emptyValue ? $this->value : '';
                 }
                 $val = !$emptyInitText ? $this->initValueText : $key;
-                $this->data = $multiple ? array_combine((array)$key, (array)$val) : (($emptyPH && $key !== '') ? [$key => $val] : []);
+                if ($multiple) {
+                    $this->data = $key !== '' ? array_combine((array)$key, (array)$val) : $emptyData;
+                } else {
+                    $this->data = $key !== '' ? [$key => $val] : $emptyData;
+                }
             }
         }
         $this->initLanguage('language', true);

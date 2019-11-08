@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.6
+ * @version 2.1.7
  */
 
 namespace kartik\select2;
@@ -14,7 +14,7 @@ namespace kartik\select2;
  *
  * @author Mohamad Faeez <mfmdevsystem@gmail.com>
  * @modified Kartik Visweswaran <kartikv2@gmail.com>
- * @since 2.1.6
+ * @since 2.1.7
  */
 class ThemeMaterialAsset extends ThemeAsset
 {

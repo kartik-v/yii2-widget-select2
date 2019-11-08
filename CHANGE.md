@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.7
+
+**Date:** _under development_
+
+- (bug #303, #304, #299, #298): Correct default data & empty placeholder validation.
+
 ## Version 2.1.6
 
 **Date:** 01-Nov-2019
