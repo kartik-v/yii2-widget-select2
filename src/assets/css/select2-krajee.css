@@ -364,6 +364,7 @@
     line-height: 1.428571429;
     margin-top: 0;
     min-width: 5em;
+    color: #999;
 }
 
 .select2-container--krajee[dir="rtl"] .select2-selection--single {
