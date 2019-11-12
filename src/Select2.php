@@ -236,7 +236,7 @@ class Select2 extends InputWidget
         if (empty($this->data)) {
             $emptyValue = !isset($this->value) || $this->value === '';
             $emptyInitText = !isset($this->initValueText) || $this->initValueText === '';
-            $emptyData = !isset($this->pluginOptions['placeholder']) ? ['' => '']: [];
+            $emptyData = !isset($this->pluginOptions['placeholder']) && !$multiple ? ['' => '']: [];
             if ($emptyValue && $emptyInitText) {
                 $this->data = $emptyData;
             } else {
