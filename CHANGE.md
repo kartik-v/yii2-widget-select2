@@ -3,7 +3,7 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.1.7
 
-**Date:** _under development_
+**Date:** 15-Nov-2019
 
 - (enh #305): Correct placeholder color style for multiple Select2 Krajee BS3 Theme.
 - (bug #303, #304, #299, #298): Correct default data & empty placeholder validation.
