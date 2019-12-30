@@ -1,0 +1,225 @@
+/*!
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
+ * @version 2.1.7
+ *
+ * Material Theme for Select2
+ *
+ * Authors: Faeez & Kartik Visweswaran
+ * For more JQuery plugins visit http://plugins.krajee.com
+ * For more Yii related demos visit http://demos.krajee.com
+ */
+.select2-container--material .select2-selection__clear {
+    color: #999;
+    cursor: pointer;
+    float: right;
+    font-weight: 700;
+}
+
+.select2-container--material .select2-selection__clear:hover {
+    color: #333;
+}
+
+.select2-container--material ::-webkit-input-placeholder,
+.select2-container--material :-ms-input-placeholder,
+.select2-container--material ::placeholder {
+    color: inherit;
+}
+
+.select2-container--material .select2-selection {
+	display: block;
+    width: 100%;
+    color: #55595c;
+    font-size: 1rem;
+	margin: .2rem 0 1rem;
+	border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    transition: all .3s;
+    cursor: context-menu;
+}
+
+.select2-container--material .select2-selection--single {
+    padding-bottom: 31px;
+}
+
+.select2-container--material .select2-selection .select2-selection__rendered {
+    padding-left: 0;
+}
+
+.select2-container--material .select2-selection--single .select2-selection__rendered {
+    padding: 6px;
+    font-size: 0.875rem;
+    float: left;
+}
+
+.select2-container--material .select2-selection--single .select2-selection__clear {
+    margin-left: 4px;
+}
+
+.select2-container--material .select2-selection--single .select2-selection__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 6px;
+    right: 6px;
+    width: 4px;
+}
+
+.select2-container--material .select2-selection--single .select2-selection__arrow b {
+	position: absolute;
+    border-color: #999 transparent transparent transparent;
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    height: 0;
+    left: 0;
+    margin-left: -4px;
+    margin-top: -2px;
+    top: 50%;
+    width: 0;
+}
+
+.select2-container--material .select2-selection--multiple .select2-selection__rendered {
+    width: 100%;
+    text-overflow: inherit;
+    white-space: inherit;
+}
+
+.select2-container--material .select2-selection--multiple .select2-selection__rendered li {
+    list-style: none;
+}
+
+.select2-container--material .select2-selection--multiple .select2-selection__choice {
+    float: left;
+    position: relative;
+    display: inline-block;
+    margin: 2px 2px 0 0;
+    padding: 1px 18px 2px 8px;
+    border: 0;
+    border-radius: 12px;
+    background-color: #dedede;
+    color: rgba(0, 0, 0, .87);
+    white-space: nowrap;
+    font-size: 0.78rem;
+    vertical-align: middle;
+}
+
+.select2-container--material .select2-selection--multiple .select2-selection__rendered {
+    margin: 0;
+    padding: 0 6px;
+}
+
+.select2-container--material .select2-selection--multiple .select2-search__field {
+    outline: none;
+    font-size: 0.875rem;
+    color: #55595c;
+    padding: 0;
+    margin: 0;
+}
+
+.select2-container--material .select2-selection--multiple .select2-search--inline {
+    display: inline-block;
+}
+
+.select2-container--material .select2-results__group {
+    display: inline-block;
+    padding: 3px 0 8px;
+}
+
+.select2-container--material .select2-selection--multiple .select2-selection__choice__remove {
+    position: absolute;
+    right: 4px;
+    bottom: 0;
+    cursor: pointer;
+    opacity: 0.38;
+    float: right;
+    transition: opacity;
+    font-size: 1rem;
+}
+
+.select2-container--material .select2-selection--multiple .select2-selection__choice__remove:hover {
+    opacity: .54;
+}
+
+.select2-container--material .select2-dropdown {
+    border: 0;
+    margin: -8px 0;
+}
+
+.select2-container--material .select2-dropdown .select2-search__field {
+    min-height: 32px;
+    margin-bottom: 16px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    transition: all .3s
+}
+
+.select2-container--material .select2-dropdown .select2-search__field:focus {
+    border-bottom: 1px solid #4285f4;
+    box-shadow: 0 1px 0 0 #4585f4;
+}
+
+.select2-container--material .select2-results__options {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    background-color: #fff;
+    margin: 0;
+    min-width: 100px;
+}
+
+.select2-container--material .select2-results > .select2-results__options {
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.select2-container--material .select2-results__option {
+    clear: both;
+    color: rgba(0, 0, 0, .87);
+    line-height: 1.5rem;
+    text-align: left;
+    text-transform: none;
+    display: block;
+    padding: 10px 12px;
+}
+
+.select2-container--material .select2-results__option[aria-disabled=true] {
+    color: rgba(0, 0, 0, .3);
+    background-color: transparent !important;
+    cursor: not-allowed;
+}
+
+.select2-container--material .select2-results__option[aria-selected=true] {
+    color: #4285f4;
+    background-color: #eee;
+}
+
+.select2-container--material .select2-results__option--highlighted[aria-selected] {
+    background-color: #ddd;
+}
+
+.select2-container--material.select2-container--focus .select2-selection {
+    border-bottom: 1px solid #4285f4;
+    box-shadow: 0 1px 0 0 #4585f4;
+}
+
+.select2-container--material.select2-container--disabled .select2-selection {
+    color: rgba(0, 0, 0, .3);
+    cursor: not-allowed;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .3)
+}
+
+.select2-container--material.select2-container--disabled.select2-container--focus .select2-selection {
+    box-shadow: none;
+}
+
+.form-control.select2-hidden-accessible {
+    position: absolute !important;
+    width: 1px !important;
+}
+
+.form-inline .select2-container--material {
+    display: inline-block;
+}

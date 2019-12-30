@@ -10,12 +10,13 @@
 namespace kartik\select2;
 
 /**
- * Asset bundle for the bootstrap theme for [[Select2]] widget.
+ * Asset bundle for the Krajee theme for [[Select2]] widget.
  *
- * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
+ * @author Mohamad Faeez <mfmdevsystem@gmail.com>
+ * @modified Kartik Visweswaran <kartikv2@gmail.com>
+ * @since 2.1.7
  */
-class ThemeBootstrapAsset extends ThemeAsset
+class ThemeMaterialAsset extends ThemeAsset
 {
     /**
      * @inheritdoc
@@ -23,7 +24,7 @@ class ThemeBootstrapAsset extends ThemeAsset
     public function init()
     {
         $this->initTheme();
-        $this->setupAssets('css', ['css/select2-bootstrap']);
+        $this->setupAssets('css', ['css/select2-material']);
         parent::init();
     }
 }

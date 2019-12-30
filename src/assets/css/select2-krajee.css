@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
- * @version 2.1.4
+ * @version 2.1.7
  *
  * Krajee Bootstrap 3.x Theme for Select2
  *
@@ -364,6 +364,7 @@
     line-height: 1.428571429;
     margin-top: 0;
     min-width: 5em;
+    color: #999;
 }
 
 .select2-container--krajee[dir="rtl"] .select2-selection--single {

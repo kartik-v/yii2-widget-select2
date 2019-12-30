@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
- * @version 2.1.4
+ * @version 2.1.7
  *
  * Additional enhancements for Select2 widget extension for Yii 2.0.
  *
@@ -15,7 +15,7 @@ var initS2ToggleAll = function () {
 }, initS2Unselect = function () {
 };
 (function (factory) {
-    "use strict";
+    'use strict';
     if (typeof define === 'function' && define.amd) { // jshint ignore:line
         // AMD. Register as an anonymous module.
         define(['jquery'], factory); // jshint ignore:line
@@ -30,19 +30,46 @@ var initS2ToggleAll = function () {
         }
     }
 }(function ($) {
-    "use strict";
+    'use strict';
     initS2ToggleAll = function (id) {
-        var $el = $('#' + id), togId = '#' + 's2-togall-' + id, $tog = $(togId);
+        var $el = $('#' + id), togId = '#' + 's2-togall-' + id, $tog = $(togId), listenTogAll;
         if (!$el.attr('multiple')) {
             return;
         }
+        listenTogAll = function () {
+            $tog.off('.krajees2').on('click.krajees2', function () {
+                var isSelect = $tog.hasClass('s2-togall-select'), ev = 'selectall', val;
+                if (!isSelect) {
+                    ev = 'unselectall';
+                }
+                $('#select2-' + id + '-results .select2-results__option[role="option"]').each(function () {
+                    val = $(this).attr('id').split('-').pop();
+                    $el.find('option:not([disabled])[value="' + val + '"]').prop('selected', !!isSelect);
+                });
+                $el.select2('close').trigger('krajeeselect2:' + ev).trigger('change');
+            });
+        };
         $el.on('select2:open.krajees2', function () {
+            var ev = 'input.krajees2 keyup.krajees2';
             if ($tog.parent().attr('id') === 'parent-' + togId || !$el.attr('multiple')) {
                 return;
             }
             $('#select2-' + id + '-results').closest('.select2-dropdown').prepend($tog);
             $('#parent-' + togId).remove();
-        }).on('change.krajeeselect2', function () {
+            $(this).parent().find('.select2-search__field').off(ev).on(ev, function () {
+                setTimeout(function () {
+                    var opt = '#select2-' + id + '-results .select2-results__option[role="option"]',
+                        sel = opt + '[aria-selected="true"]', len = $(opt).length;
+                    $tog.removeClass('s2-togall-select s2-togall-unselect');
+                    if (len > 0 && $(sel).length === len) {
+                        $tog.addClass('s2-togall-unselect');
+                    } else {
+                        $tog.addClass('s2-togall-select');
+                    }
+                    listenTogAll();
+                }, 100);
+            });
+        }).on('change.krajees2', function () {
             if (!$el.attr('multiple')) {
                 return;
             }
@@ -58,25 +85,18 @@ var initS2ToggleAll = function () {
             } else {
                 $tog.addClass('s2-togall-unselect');
             }
+            listenTogAll();
         });
-        $tog.off('.krajees2').on('click.krajees2', function () {
-            var isSelect = $tog.hasClass('s2-togall-select'), flag = true, ev = 'selectall';
-            if (!isSelect) {
-                flag = false;
-                ev = 'unselectall';
-            }
-            $el.find('option:not([disabled])').prop('selected', flag);            
-            $el.select2('close').trigger('krajeeselect2:' + ev).trigger('change');
-        });
+        listenTogAll();
     };
     initS2Change = function ($el) {
         $el = $el || $(this);
-        var $drop = $(".select2-container--open"), cssClasses, i, $src = $el.parents("[class*='has-']");
+        var $drop = $('.select2-container--open'), cssClasses, i, $src = $el.parents('[class*=\'has-\']');
         if ($src.length) {
             cssClasses = $src[0].className.split(/\s+/);
             for (i = 0; i < cssClasses.length; i++) {
-                if (cssClasses[i].match("has-")) {
-                    $drop.removeClass("has-success has-error has-warning").addClass(cssClasses[i]);
+                if (cssClasses[i].match('has-')) {
+                    $drop.removeClass('has-success has-error has-warning').addClass(cssClasses[i]);
                 }
             }
         }
@@ -84,7 +104,7 @@ var initS2ToggleAll = function () {
     initS2Unselect = function () {
         var $el = $(this), opts = $el.data('select2').options;
         opts.set('disabled', true);
-        setTimeout(function() {
+        setTimeout(function () {
             opts.set('disabled', false);
             $el.trigger('krajeeselect2:cleared');
         }, 1);
@@ -124,9 +144,9 @@ var initS2ToggleAll = function () {
             $el.next(themeCss).removeClass(sizeCss).addClass(sizeCss);
         }
         if (doReset) {
-            $el.closest("form").off('.krajees2').on("reset.krajees2", function () {
+            $el.closest('form').off('.krajees2').on('reset.krajees2', function () {
                 setTimeout(function () {
-                    $el.trigger("change").trigger("krajeeselect2:reset");
+                    $el.trigger('change').trigger('krajeeselect2:reset');
                 }, 100);
             });
         }
@@ -146,5 +166,11 @@ var initS2ToggleAll = function () {
         $el.on('change.krajees2', function () {
             setTimeout(initS2Change, 500);
         }).on('select2:unselecting.krajees2', initS2Unselect);
+        setTimeout(function () {
+            if ($el.attr('multiple') && $el.attr('dir') === 'rtl') {
+                $el.parent().find('.select2-search__field').css({width: '100%', direction: 'rtl'});
+                $el.parent().find('.select2-search--inline').css({float: 'none'});
+            }
+        }, 100);
     };
 }));

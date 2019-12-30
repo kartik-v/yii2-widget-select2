@@ -4,13 +4,14 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.4
+ * @version 2.1.7
  */
 
 namespace kartik\select2;
 
 use kartik\base\AddonTrait;
 use kartik\base\InputWidget;
+use ReflectionException;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
@@ -64,6 +65,10 @@ class Select2 extends InputWidget
      * Select2 Krajee theme (default for BS4)
      */
     const THEME_KRAJEE_BS4 = 'krajee-bs4';
+    /**
+     * Select2 Material Theme
+     */
+    const THEME_MATERIAL = 'material';
 
     /**
      * @var array $data the option data items. The array keys are option values, and the array values are the
@@ -187,12 +192,13 @@ class Select2 extends InputWidget
         self::THEME_BOOTSTRAP,
         self::THEME_KRAJEE,
         self::THEME_KRAJEE_BS4,
+        self::THEME_MATERIAL,
     ];
 
     /**
      * @inheritdoc
-     * @throws \ReflectionException
-     * @throws \yii\base\InvalidConfigException
+     * @throws ReflectionException
+     * @throws InvalidConfigException
      */
     public function run()
     {
@@ -202,8 +208,8 @@ class Select2 extends InputWidget
 
     /**
      * Initializes and renders the widget
-     * @throws \ReflectionException
-     * @throws \yii\base\InvalidConfigException
+     * @throws ReflectionException
+     * @throws InvalidConfigException
      */
     public function renderWidget()
     {
@@ -227,17 +233,26 @@ class Select2 extends InputWidget
             $this->pluginOptions['minimumResultsForSearch'] = new JsExpression('Infinity');
         }
         $this->initPlaceholder();
-        if (!$this->data) {
-            if (!$this->value && !$this->initValueText) {
-                $this->data = ['' => ''];
+
+        if (empty($this->data)) {
+            $emptyValue = !isset($this->value) || $this->value === '';
+            $emptyInitText = !isset($this->initValueText) || $this->initValueText === '';
+            $emptyData = ['' => ''];
+            if ($emptyValue && $emptyInitText) {
+                $this->data = $emptyData;
             } else {
                 if ($multiple) {
-                    $key = $this->value && is_array($this->value) ? $this->value : [];
+                    $key = !$emptyValue && is_array($this->value) ? $this->value : '';
                 } else {
-                    $key = $this->value ? $this->value : '';
+                    $key = !$emptyValue ? $this->value : '';
                 }
-                $val = $this->initValueText ? $this->initValueText : $key;
-                $this->data = $multiple ? array_combine((array)$key, (array)$val) : [$key => $val];
+                $val = !$emptyInitText ? $this->initValueText : $key;
+                if ($multiple) {
+                    $this->data = $key !== '' ? array_combine((array)$key, (array)$val) : $emptyData;
+                } else {
+                    $this->data = $key !== '' ? [$key => $val] : $emptyData;
+                }
+
             }
         }
         $this->initLanguage('language', true);
@@ -248,7 +263,7 @@ class Select2 extends InputWidget
 
     /**
      * Initializes and render the toggle all button
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     protected function renderToggleAll()
     {
@@ -361,7 +376,7 @@ class Select2 extends InputWidget
     {
         if ($this->pluginLoading) {
             $this->_loadIndicator = '<div class="kv-plugin-loading loading-' . $this->options['id'] . '">&nbsp;</div>';
-            Html::addCssStyle($this->options, 'display:none');
+            Html::addCssStyle($this->options, ['width' => '1px', 'height' => '1px', 'visibility' => 'hidden']);
         }
         Html::addCssClass($this->options, 'form-control');
         $input = $this->getInput('dropDownList', true);
