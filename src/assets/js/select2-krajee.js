@@ -43,7 +43,7 @@ var initS2ToggleAll = function () {
                     ev = 'unselectall';
                 }
                 $('#select2-' + id + '-results .select2-results__option[role="option"]').each(function () {
-                    [, val] = $(this).attr('id').match(/^select2-[^-]*-result-.{4}-(.*)$/);
+                    [, val] = $(this).attr('id').match('^select2-'+ id + '-result-.{4}-(.*)$');
                     $el.find('option:not([disabled])[value="' + val + '"]').prop('selected', !!isSelect);
                 });
                 $el.select2('close').trigger('krajeeselect2:' + ev).trigger('change');
