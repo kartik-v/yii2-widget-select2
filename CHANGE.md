@@ -1,6 +1,15 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.8
+
+**Date:** 21-Jul-2020
+
+- (enh #326): Correct styling for all themes.
+- (enh #321): Add Kazakh Translations.
+- (enh #316): Add Uzbek Translations.
+- (enh #311): Add Turkish Translations.
+
 ## Version 2.1.7
 
 **Date:** 15-Nov-2019

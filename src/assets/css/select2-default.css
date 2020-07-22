@@ -79,6 +79,10 @@
     margin-top: 5px;
     padding: 0 5px; }
   .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    border: none;
+    background: none;
+    box-shadow: none;
+    outline: none;
     color: #999;
     cursor: pointer;
     display: inline-block;

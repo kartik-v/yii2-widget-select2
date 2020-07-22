@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2020
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.1.7
+ * @version 2.1.8
  */
 
 namespace kartik\select2;
@@ -236,7 +236,11 @@ class Select2 extends InputWidget
         if (empty($this->data)) {
             $emptyValue = !isset($this->value) || $this->value === '';
             $emptyInitText = !isset($this->initValueText) || $this->initValueText === '';
-            $emptyData = !isset($this->pluginOptions['placeholder']) && !$multiple ? ['' => '']: [];
+            if (!isset($this->pluginOptions['placeholder']) && !$multiple && $this->isRequired()) {
+                $emptyData = ['' => ''];
+            } else {
+                $emptyData = [];
+            }
             if ($emptyValue && $emptyInitText) {
                 $this->data = $emptyData;
             } else {
@@ -434,5 +438,22 @@ class Select2 extends InputWidget
             $view->registerJs("initS2Order('{$id}',{$val});");
         }
         $this->registerPlugin($this->pluginName, "jQuery('#{$id}')", "initS2Loading('{$id}','{$this->_s2OptionsVar}')");
+    }
+    
+    protected function isRequired()
+    {
+        if (!empty($this->options['required'])) {
+            return true;
+        }
+        if (!$this->hasModel()) {
+            return false;
+        }
+        $validators = $this->model->getValidators($this->attribute);
+        foreach ($validators as $validator) {
+            if ($validator instanceof yii\validators\RequiredValidator) {
+                return true;
+            }
+        }
+        return false;
     }
 }
