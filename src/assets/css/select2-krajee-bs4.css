@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2020
- * @version 2.1.8
+ * @version 2.1.9
  *
  * Krajee Bootstrap 4.x Theme for Select2
  *
@@ -539,8 +539,6 @@
  * Selection Clear
  */
 .select2-container--krajee-bs4 .select2-selection__clear {
-    position: absolute;
-    font-size: 1.4rem;
     font-weight: 700;
     line-height: 1;
     color: #000;
@@ -554,6 +552,7 @@
 
 .select2-container--krajee-bs4 .select2-selection--single .select2-selection__clear,
 .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear {
+    position: absolute;
     font-size: 1.2rem;
 }
 

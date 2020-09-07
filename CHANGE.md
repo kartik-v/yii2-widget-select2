@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.1.9
+
+**Date:** _under development_
+
+- (enh #329): Minor fixes to select2 krajee theme.
+
 ## Version 2.1.8
 
 **Date:** 21-Jul-2020
