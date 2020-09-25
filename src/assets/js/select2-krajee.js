@@ -38,13 +38,16 @@ var initS2ToggleAll = function () {
         }
         listenTogAll = function () {
             $tog.off('.krajees2').on('click.krajees2', function () {
-                var isSelect = $tog.hasClass('s2-togall-select'), ev = 'selectall', val;
+                var isSelect = $tog.hasClass('s2-togall-select'), ev = 'selectall', opts, val;
                 if (!isSelect) {
                     ev = 'unselectall';
                 }
                 $('#select2-' + id + '-results .select2-results__option[role="option"]').each(function () {
-                    val = $(this).attr('id').split('-').pop();
-                    $el.find('option:not([disabled])[value="' + val + '"]').prop('selected', !!isSelect);
+                    opts = $(this).attr('id').match(/^select2-[^-]*-result-.{4}-(.*)$/);
+                    if (opts.length && opts[1]) {
+                        val = opts[1];
+                        $el.find('option:not([disabled])[value="' + val + '"]').prop('selected', !!isSelect);
+                    }
                 });
                 $el.select2('close').trigger('krajeeselect2:' + ev).trigger('change');
             });
@@ -102,10 +105,13 @@ var initS2ToggleAll = function () {
         }
     };
     initS2Unselect = function () {
-        var $el = $(this), opts = $el.data('select2').options;
-        opts.set('disabled', true);
+        var $el = $(this), select2 = $el.data('select2');
+        if (!select2 || !select2.options) {
+            return;
+        }
+        select2.options.set('disabled', true);
         setTimeout(function () {
-            opts.set('disabled', false);
+            select2.options.set('disabled', false);
             $el.trigger('krajeeselect2:cleared');
         }, 1);
     };
@@ -169,7 +175,7 @@ var initS2ToggleAll = function () {
         setTimeout(function () {
             if ($el.attr('multiple') && $el.attr('dir') === 'rtl') {
                 $el.parent().find('.select2-search__field').css({width: '100%', direction: 'rtl'});
-                $el.parent().find('.select2-search--inline').css({float: 'none'});
+                $el.parent().find('.select2-search--inline').css({"float": "none"});
             }
         }, 100);
     };

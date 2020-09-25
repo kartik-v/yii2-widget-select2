@@ -9,6 +9,7 @@
 
 namespace kartik\select2;
 
+use Exception;
 use kartik\base\AddonTrait;
 use kartik\base\InputWidget;
 use ReflectionException;
@@ -18,8 +19,8 @@ use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use Yii\validators\RequiredValidator;
 use yii\web\JsExpression;
-use yii\web\View;
 
 /**
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This input widget is a jQuery based replacement for
@@ -33,6 +34,7 @@ use yii\web\View;
 class Select2 extends InputWidget
 {
     use AddonTrait;
+
     /**
      * Select2 large input size
      */
@@ -210,6 +212,7 @@ class Select2 extends InputWidget
      * Initializes and renders the widget
      * @throws ReflectionException
      * @throws InvalidConfigException
+     * @throws Exception
      */
     public function renderWidget()
     {
@@ -311,6 +314,7 @@ class Select2 extends InputWidget
 
     /**
      * Initializes the placeholder for Select2
+     * @throws Exception
      */
     protected function initPlaceholder()
     {
@@ -338,6 +342,7 @@ class Select2 extends InputWidget
      *
      * @return string
      * @throws InvalidConfigException
+     * @throws Exception
      */
     protected function embedAddon($input)
     {
@@ -432,14 +437,17 @@ class Select2 extends InputWidget
         $this->_s2OptionsVar = 's2options_' . hash('crc32', $options);
         $this->options['data-s2-options'] = $this->_s2OptionsVar;
         $view = $this->getView();
-        $view->registerJs("var {$this->_s2OptionsVar} = {$options};", View::POS_HEAD);
+        $view->registerJs("var {$this->_s2OptionsVar} = {$options};", $this->hashVarLoadPosition);
         if ($this->maintainOrder) {
             $val = Json::encode(is_array($this->value) ? $this->value : [$this->value]);
             $view->registerJs("initS2Order('{$id}',{$val});");
         }
         $this->registerPlugin($this->pluginName, "jQuery('#{$id}')", "initS2Loading('{$id}','{$this->_s2OptionsVar}')");
     }
-    
+
+    /**
+     * @return bool
+     */
     protected function isRequired()
     {
         if (!empty($this->options['required'])) {
@@ -448,9 +456,9 @@ class Select2 extends InputWidget
         if (!$this->hasModel()) {
             return false;
         }
-        $validators = $this->model->getValidators($this->attribute);
+        $validators = $this->model->getActiveValidators($this->attribute);
         foreach ($validators as $validator) {
-            if ($validator instanceof yii\validators\RequiredValidator) {
+            if ($validator instanceof RequiredValidator) {
                 return true;
             }
         }

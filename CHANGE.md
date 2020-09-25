@@ -3,9 +3,12 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.1.9
 
-**Date:** _under development_
+**Date:** 25-Sep-2020
 
+- (enh #330): Fix select all for option values containing hyphen.
 - (enh #329): Minor fixes to select2 krajee theme.
+- (enh #328): Fix undefined options in select all.
+- (enh #325): Use `hashVarLoadPosition` to initialize Select2 hash variable.
 
 ## Version 2.1.8
 

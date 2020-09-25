@@ -384,6 +384,7 @@
 /**
  * Bootstrap validation states
  */
+select.is-invalid + .select2-container--krajee-bs4 .select2-selection--single,
 .has-error.select2-container--krajee-bs4 .select2-dropdown,
 .has-error .select2-container--krajee-bs4 .select2-selection {
     border-color: #dc3545;
@@ -395,6 +396,7 @@
     border-color: #dc3545;
 }
 
+select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 .has-success.select2-container--krajee-bs4 .select2-dropdown,
 .has-success .select2-container--krajee-bs4 .select2-selection {
     border-color: #28a745;
