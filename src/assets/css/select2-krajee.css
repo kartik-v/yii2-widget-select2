@@ -199,6 +199,7 @@
     border-radius: 0;
 }
 
+.select2-container--krajee .select2-results__option.select2-results__option--selected,
 .select2-container--krajee .select2-results__option[aria-selected=true] {
     color: #31708f;
     background-color: #d9edf7;
@@ -329,7 +330,6 @@
 
 .select2-container--krajee .select2-selection--multiple .select2-selection__rendered {
     box-sizing: border-box;
-    display: block;
     line-height: 1.428571429;
     list-style: none;
     margin: 0;
