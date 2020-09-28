@@ -43,7 +43,7 @@ var initS2ToggleAll = function () {
                     ev = 'unselectall';
                 }
                 $('#select2-' + id + '-results .select2-results__option[role="option"]').each(function () {
-                    opts = $(this).attr('id').match(/^select2-[^-]*-result-.{4}-(.*)$/);
+                    opts = $(this).attr('id').match(/^select2-\S*-result-.{4}-(.*)$/);
                     if (opts.length && opts[1]) {
                         val = opts[1];
                         $el.find('option:not([disabled])[value="' + val + '"]').prop('selected', !!isSelect);
