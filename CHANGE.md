@@ -3,7 +3,7 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.2.0
 
-**Date:** 25-Sep-2020
+**Date:** _under development_
 
 - (enh #330): More correct hyphen validation for select all.
 
