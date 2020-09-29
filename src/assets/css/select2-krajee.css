@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2020
- * @version 2.2.0
+ * @version 2.2.1
  *
  * Krajee Bootstrap 3.x Theme for Select2
  *
@@ -359,7 +359,7 @@
 
 .select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field {
     background: transparent;
-    padding: 0 12px;
+    padding: 0 3px;
     height: 32px;
     line-height: 1.428571429;
     margin-top: 0;

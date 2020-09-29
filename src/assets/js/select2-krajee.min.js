@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2020
- * @version 2.2.0
+ * @version 2.2.1
  *
  * Additional enhancements for Select2 widget extension for Yii 2.0.
  *

@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.2.1
+
+**Date:** _under development_
+
+- Fix Krajee BS themes styling for multiple select.
+
 ## Version 2.2.0
 
 **Date:** 28-Sep-2020
