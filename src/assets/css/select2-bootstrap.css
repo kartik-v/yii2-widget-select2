@@ -321,7 +321,7 @@
 }
 .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
   background: transparent;
-  padding: 0 3px;
+  padding: 6px;
   height: 32px;
   line-height: 1.428571429;
   margin-top: 0;
@@ -374,7 +374,6 @@
   padding: 0 5px;
 }
 .select2-container--bootstrap.input-sm .select2-selection--multiple .select2-search--inline .select2-search__field, .input-group-sm .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field, .form-group-sm .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
-  padding: 0 10px;
   font-size: 12px;
   height: 28px;
   line-height: 1.5;
@@ -410,7 +409,7 @@
   padding: 0 10px;
 }
 .select2-container--bootstrap.input-lg .select2-selection--multiple .select2-search--inline .select2-search__field, .input-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field, .form-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
-  padding: 0 16px;
+  padding: 12px;
   font-size: 18px;
   height: 44px;
   line-height: 1.3333333;

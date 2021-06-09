@@ -1,5 +1,5 @@
 /*!
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2020
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
  * @version 2.2.1
  *
  * Krajee Bootstrap 4.x Theme for Select2
@@ -52,16 +52,8 @@
     outline: 0;
 }
 
-.select2-container--krajee-bs4 .select2-search__field::-webkit-input-placeholder,
-.select2-container--krajee-bs4 .select2-search__field:-moz-placeholder,
-.select2-container--krajee-bs4 .select2-search__field::-moz-placeholder,
-.select2-container--krajee-bs4 .select2-search__field:-ms-input-placeholder {
+.select2-container--krajee-bs4 .select2-search__field::placeholder {
     color: #999;
-
-}
-
-.select2-container--krajee-bs4 .select2-search__field::-moz-placeholder {
-    opacity: 1;
 }
 
 .select2-container--krajee-bs4 .select2-dropdown[dir="rtl"] .select2-search__field {
@@ -358,7 +350,7 @@
 
 .select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field {
     background: transparent;
-    padding: 0 0.2rem;
+    padding: 0.5rem;
     height: 2.25rem;
     line-height: 1.5;
     margin-top: 0;
@@ -493,7 +485,7 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 
 .input-sm.select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field,
 .input-group-sm .select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field {
-    padding: 0 0.625rem;
+    padding: 0.35rem;
     font-size: 0.875rem;
     height: calc(1.875rem - 1px);
     line-height: 1.5;
@@ -533,7 +525,8 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 
 .input-lg.select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field,
 .input-group-lg .select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field {
-    margin: 0.25rem;
+    font-size: 1.25rem;
+    padding: 0.5625rem;
     font-size: 1.25rem;
 }
 

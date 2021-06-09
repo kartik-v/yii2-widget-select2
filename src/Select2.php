@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2020
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
  * @version 2.2.1
@@ -128,7 +128,8 @@ class Select2 extends InputWidget
      * - `unselectLabel`: _string_, the markup to be shown to unselect all records. Defaults to:
      *   `<i class="glyphicon glyphicon-checked"></i> Unselect all`.
      * - `selectOptions`: _array_, the HTML attributes for the container wrapping the select label. Defaults to `[]`.
-     * - `unselectOptions`: _array_, the HTML attributes for the container wrapping the unselect label. Defaults to `[]`.
+     * - `unselectOptions`: _array_, the HTML attributes for the container wrapping the unselect label. Defaults to
+     *     `[]`.
      * - `options`: _array_, the HTML attributes for the toggle button container. Defaults to:
      *   `['class' => 's2-togall-button']`.
      */
@@ -458,15 +459,9 @@ class Select2 extends InputWidget
         }
         $validators = $this->model->getActiveValidators($this->attribute);
         foreach ($validators as $validator) {
-            if ($validator instanceof RequiredValidator) {
-                if (is_callable($validator->when)) {
-                    if (call_user_func($validator->when, $this->model, $this->attribute)) {
-                        return true;
-                    }
-                } else {
-                    return true;
-                }
-
+            if ($validator instanceof RequiredValidator && (!is_callable($validator->when) ||
+                    call_user_func($validator->when, $this->model, $this->attribute))) {
+                return true;
             }
         }
         return false;
