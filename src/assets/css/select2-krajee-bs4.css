@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
- * @version 2.2.1
+ * @version 2.2.2
  *
  * Krajee Bootstrap 4.x Theme for Select2
  *
@@ -424,7 +424,6 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 .input-group > .select2-container--krajee-bs4:focus {
     z-index: 3;
 }
-
 .input-group > .select2-container--krajee-bs4:not(:last-child),
 .input-group > .select2-container--krajee-bs4:not(:last-child) .select2-selection {
     border-top-right-radius: 0;
@@ -641,4 +640,8 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 
 .select2-container--krajee-bs4 .select2-dropdown[dir="rtl"] .select2-results__option {
     text-align: right;
+}
+
+.select2-container--krajee-bs4 > .select2-dropdown {
+    z-index: 1056;
 }

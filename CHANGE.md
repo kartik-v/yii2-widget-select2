@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.2.2
+
+**Date:** 02-Sep-2021
+
+- (enh #338): Enhancements to support Bootstrap v5.x.
+
 ## Version 2.2.1
 
 **Date:** 09-Jun-2021

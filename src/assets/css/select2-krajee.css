@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
- * @version 2.2.1
+ * @version 2.2.2
  *
  * Krajee Bootstrap 3.x Theme for Select2
  *
@@ -359,7 +359,7 @@
 
 .select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field {
     background: transparent;
-    padding: 0 3px;
+    padding: 6px;
     height: 32px;
     line-height: 1.428571429;
     margin-top: 0;
@@ -493,7 +493,7 @@
 
 .input-sm.select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field,
 .input-group-sm .select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field {
-    padding: 0 10px;
+    padding: 6px;
     font-size: 12px;
     height: 28px;
     line-height: 1.5;
@@ -524,7 +524,7 @@
 
 .input-lg.select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field,
 .input-group-lg .select2-container--krajee .select2-selection--multiple .select2-search--inline .select2-search__field {
-    padding: 0 10px;
+    padding: 12px 6px;
     font-size: 18px;
     height: 44px;
     line-height: 1.3333333;

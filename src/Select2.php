@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.2.1
+ * @version 2.2.2
  */
 
 namespace kartik\select2;
@@ -25,7 +25,7 @@ use yii\web\JsExpression;
 /**
  * Select2 widget is a Yii2 wrapper for the Select2 jQuery plugin. This input widget is a jQuery based replacement for
  * select boxes. It supports searching, remote data sets, and infinite scrolling of results. The widget is specially
- * styled for Bootstrap 3.x and Bootstrap 4.x.
+ * styled for all major Bootstrap releases 3.x, 4.x & 5.x.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
@@ -89,7 +89,7 @@ class Select2 extends InputWidget
     /**
      * @var string the theme name to be used for styling the Select2. If not set this will default to:
      * - [[THEME_KRAJEE]] if [[bsVersion]] is set to '3.x'
-     * - [[THEME_KRAJEE_BS4]] if [[bsVersion]] is set to '4.x'
+     * - [[THEME_KRAJEE_BS4]] if [[bsVersion]] is set to '4.x' or '5.x'
      */
     public $theme;
 
@@ -218,7 +218,8 @@ class Select2 extends InputWidget
     public function renderWidget()
     {
         if (!isset($this->theme)) {
-            $this->theme = $this->isBs4() ? self::THEME_KRAJEE_BS4 : self::THEME_KRAJEE;
+            $ver = $this->getBsVer();
+            $this->theme = $ver === 3 ? self::THEME_KRAJEE : self::THEME_KRAJEE_BS4;
         }
         $this->initI18N(__DIR__);
         $this->pluginOptions['theme'] = $this->theme;
@@ -280,7 +281,7 @@ class Select2 extends InputWidget
         }
         $unchecked = '<i class="glyphicon glyphicon-unchecked"></i>';
         $checked = '<i class="glyphicon glyphicon-check"></i>';
-        if ($this->isBs4()) {
+        if (!$this->isBs(3)) {
             $unchecked = '<i class="far fa-square"></i>';
             $checked = '<i class="far fa-check-square"></i>';
         }
@@ -350,7 +351,7 @@ class Select2 extends InputWidget
         if (empty($this->addon)) {
             return $input;
         }
-        $isBs4 = $this->isBs4();
+        $notBs3 = !$this->isBs(3);
         $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
         $css = ['input-group', 's2-input-group'];
         if (isset($this->size)) {
@@ -361,12 +362,12 @@ class Select2 extends InputWidget
             Html::addCssClass($group, 'kv-input-group-hide');
             Html::addCssClass($group, 'group-' . $this->options['id']);
         }
-        $prepend = $this->getAddonContent('prepend', $isBs4);
-        $append = $this->getAddonContent('append', $isBs4);
-        if (!$isBs4 && isset($this->addon['prepend']) && is_array($this->addon['prepend'])) {
+        $prepend = $this->getAddonContent('prepend');
+        $append = $this->getAddonContent('append');
+        if (!$notBs3 && isset($this->addon['prepend']) && is_array($this->addon['prepend'])) {
             Html::addCssClass($group, 'select2-bootstrap-prepend');
         }
-        if (!$isBs4 && isset($this->addon['append']) && is_array($this->addon['append'])) {
+        if (!$notBs3 && isset($this->addon['append']) && is_array($this->addon['append'])) {
             Html::addCssClass($group, 'select2-bootstrap-append');
         }
         $addonText = $prepend . $input . $append;
