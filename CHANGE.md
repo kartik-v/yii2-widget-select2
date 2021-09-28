@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.2.3
+
+**Date:** _under development_
+
+- (enh #339): Enhance Krajee theme to support BSv5.x floating labels.
+
 ## Version 2.2.2
 
 **Date:** 02-Sep-2021
