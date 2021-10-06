@@ -301,7 +301,7 @@
 .select2-container--krajee-bs4 .select2-selection--single {
     height: calc(2.25rem + 2px);
     line-height: 1.5;
-    padding: 0.375rem 1.5rem 0.375rem 0.75rem;
+    padding: 0.375rem 1.5rem 0.375rem 0.5rem;
 }
 
 .select2-container--krajee-bs4 .select2-selection--single .select2-selection__rendered {
@@ -314,7 +314,11 @@
 }
 
 .select2-container--krajee-bs4 .select2-selection--multiple {
-    min-height: 2.25rem;
+    min-height: 2.4rem;
+}
+
+.select2-container--krajee-bs4[dir=rtl] .select2-selection--multiple {
+    text-align: right;
 }
 
 .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__rendered {
@@ -322,11 +326,8 @@
     line-height: 1.5;
     list-style: none;
     margin: 0;
-    overflow: hidden;
     padding: 0;
     width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__placeholder {
@@ -341,21 +342,26 @@
     border: 1px solid #ccc;
     border-radius: 0.25rem;
     cursor: default;
-    float: left;
-    margin: 0.375rem 0 0 0.375rem;
-    padding: 0.05rem 0.05rem 0.25rem 0.25rem;
+    width: auto;
+    display: inline-block;
+    margin: 0.35rem 0 0 0.25rem;
+    padding: 0.15rem 0.05rem 0.15rem 0.25rem;
     font-size: 1rem;
-    line-height: 1.3;
+    line-height: 1.3rem;
+}
+
+.select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline {
+    vertical-align: middle;
 }
 
 .select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field {
     background: transparent;
-    padding: 0.5rem;
-    height: 2.25rem;
-    line-height: 1.5;
-    margin-top: 0;
+    vertical-align: middle;
+    line-height: 1.2;
+    padding: 0;
+    margin: 0.5rem;
     min-width: 5em;
-    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
 }
 
 .select2-container--krajee-bs4[dir="rtl"] .select2-selection--single .select2-selection__rendered {
@@ -364,14 +370,14 @@
     text-align: right;
 }
 
-.select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
 .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder {
-    float: right;
+    text-align: right;
 }
 
 .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
     margin-left: 0;
-    margin-right: 0.375rem;
+    margin-right: 0.25rem;
+    padding: 0.05rem 0.25rem 0.15rem 0.05rem;
 }
 
 /**
@@ -473,18 +479,20 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 :not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice,
 :not(.form-floating) > .input-group-sm .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice {
     font-size: 0.8rem;
-    margin: 0.25rem 0 0 0.375rem;
-    padding: 0.05rem 0.375rem 0.125rem;
+    margin: 0.2rem 0 0.2rem 0.2rem;
+    padding: 0.05rem 0.05rem 0.05rem 0.2rem;
 }
 
 :not(.form-floating) > .input-sm.select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
 :not(.form-floating) > .input-group-sm .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
-    margin: 0.25rem 0.375rem 0 0;
+    margin: 0 0.2rem 0.2rem 0;
+    padding: 0.05rem 0.2rem 0.05rem 0.05rem;
 }
 
 :not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field,
 :not(.form-floating) > .input-group-sm .select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field {
-    padding: 0.35rem;
+    margin: 0 0.5rem;
+    padding: 0.25rem 0;
     font-size: 0.875rem;
     height: calc(1.875rem - 1px);
     line-height: 1.5;
@@ -493,7 +501,7 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 :not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection--single,
 :not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection--single {
     height: calc(2.875rem + 2px);
-    padding: .5rem 1rem;
+    padding: .5rem 0.75rem;
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: .3rem;
@@ -504,27 +512,22 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
     min-height: calc(2.875rem + 2px);
 }
 
-:not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__rendered,
-:not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__rendered {
-    line-height: 1.5;
+:not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice,
+:not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice {
+    border-radius: 0.25rem;
+    margin: 0.5rem 0 0 0.4rem;
+    padding: 0.2rem 0.3rem;
 }
 
 :not(.form-floating) > .input-lg.select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
 :not(.form-floating) > .input-group-lg .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
-    margin: 0.5625rem 0.5625rem 0 0;
-}
-
-:not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice,
-:not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice {
-    line-height: 1.4;
-    border-radius: 0.25rem;
-    margin: 0.5625rem 0 0 0.5625rem;
-    padding: 0.15rem 0.3rem;
+    margin: 0.5rem 0.4rem 0 0;
 }
 
 :not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field,
 :not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection--multiple .select2-search--inline .select2-search__field {
-    padding: 0.5625rem;
+    padding: 0.1rem;
+    height: 30px;
     font-size: 1.25rem;
 }
 
@@ -545,46 +548,56 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 
 .select2-container--krajee-bs4 .select2-selection--single .select2-selection__clear,
 .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear {
-    position: absolute;
+    float: right;
     font-size: 1.2rem;
 }
 
-.select2-container--krajee-bs4 .select2-selection--single .select2-selection__clear {
-    right: 1.8rem;
-}
-
-.select2-container--krajee-bs4[dir="rtl"] .select2-selection--single .select2-selection__clear {
-    left: 1.8rem;
-    right: auto;
+.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear {
+    margin-top: 0.4rem;
+    margin-right: 0.3rem;
 }
 
 :not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection__clear,
 :not(.form-floating) > .input-group-sm .select2-container--krajee-bs4 .select2-selection__clear {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    line-height: 1rem;
 }
 
 :not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection__clear,
 :not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection__clear {
     font-size: 1.5rem;
+    margin-top: 0.55rem;
 }
 
-.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear {
-    top: 0.4rem;
-    right: 0.3rem;
-}
-
+.select2-container--krajee-bs4[dir="rtl"] .select2-selection--single .select2-selection__clear,
 .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__clear {
-    left: 0.3rem;
-    right: auto;
+    float: left;
 }
 
-:not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear {
-    top: 0.3rem;
+:not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear,
+:not(.form-floating) > .input-group-sm .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear {
+    margin-top: 0.3rem;
 }
 
-:not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection__clear,
-:not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection__clear {
-    top: 0.6rem;
+:not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection--single .select2-selection__clear {
+    margin-right: 0.6rem;
+}
+
+:not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection--single .select2-selection__clear,
+:not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection--single .select2-selection__clear {
+    margin-top: 0;
+    margin-right: 0.75rem;
+}
+
+:not(.form-floating) > .input-sm.select2-container--krajee-bs4[dir=rtl] .select2-selection--single .select2-selection__clear {
+    margin-left: 0.6rem;
+    margin-right: 0;
+}
+
+:not(.form-floating) > .input-lg.select2-container--krajee-bs4[dir=rtl] .select2-selection--single .select2-selection__clear,
+:not(.form-floating) > .input-group-lg .select2-container--krajee-bs4[dir=rtl] .select2-selection--single .select2-selection__clear {
+    margin-left: 0.75rem;
+    margin-right: 0;
 }
 
 /**
@@ -602,7 +615,7 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
     color: #000;
     text-shadow: 0 1px 0 #fff;
     opacity: 0.5;
-    padding-left: 0.25rem;
+    padding: 0 0 0 0.2rem;
 }
 
 .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice__remove:hover {
@@ -612,13 +625,12 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 :not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice__remove,
 :not(.form-floating) > .input-group-sm .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice__remove {
     font-size: 1.05rem;
-    line-height: 0.9;
+    line-height: 1.2rem;
 }
 
 :not(.form-floating) > .input-lg.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice__remove,
 :not(.form-floating) > .input-group-lg .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice__remove {
     font-size: 1.35rem;
-    line-height: 0.925;
 }
 
 .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
@@ -628,8 +640,7 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 
 .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
     float: left;
-    padding-left: 0;
-    padding-right: 0.25rem;
+    padding: 0 0.2rem 0 0;
 }
 
 .select2-container--krajee-bs4 .select2-dropdown[dir="rtl"] .s2-togall-button {
@@ -662,7 +673,19 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 }
 
 .form-floating > .select2-container--krajee-bs4 .select2-selection--single .select2-selection__clear {
-    top: 1rem;
+    margin: -0.45rem 0.45rem 0 0;
+}
+
+.form-floating > .select2-container--krajee-bs4[dir=rtl] .select2-selection--single .select2-selection__clear {
+    margin: -0.45rem 0 0 0.45rem;
+}
+
+.form-floating > .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__clear {
+    margin: 0 -0.45rem 0 0;
+}
+
+.form-floating > .select2-container--krajee-bs4[dir=rtl] .select2-selection--multiple .select2-selection__clear {
+    margin: 0 0 0 -0.45rem;
 }
 
 .form-floating > .select2-container--krajee-bs4 .select2-selection--multiple {
@@ -701,4 +724,8 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
     right: 0;
     left: auto;
     padding-right: 0.5rem;
+}
+
+.kv-input-group-hide, .form-floating .kv-plugin-loading ~ .form-label {
+    display: none;
 }
