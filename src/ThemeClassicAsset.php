@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2022
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
  * @version 2.2.3
@@ -10,7 +10,7 @@
 namespace kartik\select2;
 
 /**
- * Asset bundle for the classic theme for [[Select2]] widget.
+ * Asset bundle for the classic theme for the [[Select2]] widget.
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0

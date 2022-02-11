@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2022
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
  * @version 2.2.3
@@ -27,8 +27,29 @@ use yii\web\JsExpression;
  * select boxes. It supports searching, remote data sets, and infinite scrolling of results. The widget is specially
  * styled for all major Bootstrap releases 3.x, 4.x & 5.x.
  *
+ * For example,
+ * ```php
+ * use kartik\select2\Select2;
+ *
+ * // Normal select with ActiveForm & model
+ * echo $form->field($model, 'state_1')->widget(Select2::classname(), [
+ *     'data' => $data,
+ *     'language' => 'de',
+ *     'options' => ['placeholder' => 'Select a state ...'],
+ *     'pluginOptions' => [
+ *         'allowClear' => true
+ *     ],
+ * ]);
+ *
+ * // Multiple select without model
+ * echo Select2::widget([
+ *     'name' => 'state_2',
+ *     'value' => '',
+ *     'data' => $data,
+ *     'options' => ['multiple' => true, 'placeholder' => 'Select states ...']
+ * ]);
+ * ```
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0
  * @see https://github.com/select2/select2
  */
 class Select2 extends InputWidget
@@ -134,22 +155,6 @@ class Select2 extends InputWidget
      *   `['class' => 's2-togall-button']`.
      */
     public $toggleAllSettings = [];
-
-    /**
-     * @var array addon to prepend or append to the Select2 widget
-     * - `prepend`: _array_|_string_, the prepend addon configuration. If set as a string will be rendered as is. If set
-     *   as an array, the following properties can be set:
-     *    - `content`: _string_, the prepend addon content.
-     *    - `asButton`: _boolean`, whether the addon is a button or button group. Defaults to `false`.
-     * - `append`: _array_|_string_, the append addon configuration. If set as a string will be rendered as is. If set
-     *   as an array, the following properties can be set:
-     *    - `content`: _string_, the append addon content.
-     *    - `asButton`: _boolean`, whether the addon is a button or button group. Defaults to `false`.
-     * - `groupOptions`: _array_, HTML options for the input group
-     * - `contentBefore`: _string_, content placed before addon
-     * - `contentAfter`: _string_, content placed after addon
-     */
-    public $addon = [];
 
     /**
      * @var string Size of the Select2 input, must be one of the [[Select2::LARGE]], [[Select2::MEDIUM]] or

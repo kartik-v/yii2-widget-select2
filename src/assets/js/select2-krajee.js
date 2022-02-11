@@ -1,5 +1,5 @@
 /*!
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2021
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2022
  * @version 2.2.3
  *
  * Additional enhancements for Select2 widget extension for Yii 2.0.
@@ -136,7 +136,13 @@ var initS2ToggleAll = function () {
         var opts = window[optVar] || {}, themeCss = opts.themeCss, sizeCss = opts.sizeCss, doOrder = opts.doOrder,
             doReset = opts.doReset, doToggle = opts.doToggle, $el = $('#' + id), $container = $(themeCss),
             $loading = $('.kv-plugin-loading.loading-' + id), $group = $('.group-' + id);
-        $el.off('.krajees2');
+        $el.off('.krajees2').on('select2:open.krajees2', function () {
+            // fix for jQuery 3.6.0 search field not focusing
+            var searchEl = document.querySelector('input[aria-controls="select2-' + id + '-results"]');
+            if (searchEl) {
+                searchEl.focus();
+            }
+        });
         if (!$container.length) {
             $el.show();
         }
