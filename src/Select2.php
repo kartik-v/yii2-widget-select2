@@ -291,8 +291,8 @@ class Select2 extends InputWidget
             $checked = '<i class="far fa-check-square"></i>';
         }
         $settings = array_replace_recursive([
-            'selectLabel' => $unchecked . Yii::t('kvselect', 'Select all'),
-            'unselectLabel' => $checked . Yii::t('kvselect', 'Unselect all'),
+            'selectLabel' => $unchecked . Yii::t('kvselect', 'Select all', [], $this->language),
+            'unselectLabel' => $checked . Yii::t('kvselect', 'Unselect all', [], $this->language),
             'selectOptions' => [],
             'unselectOptions' => [],
             'options' => ['class' => 's2-togall-button'],
