@@ -89,6 +89,10 @@ class Select2 extends InputWidget
      */
     const THEME_KRAJEE_BS4 = 'krajee-bs4';
     /**
+     * Select2 Krajee theme (default for BS5)
+     */
+    const THEME_KRAJEE_BS5 = 'krajee-bs5';
+    /**
      * Select2 Material Theme
      */
     const THEME_MATERIAL = 'material';
@@ -200,6 +204,7 @@ class Select2 extends InputWidget
         self::THEME_BOOTSTRAP,
         self::THEME_KRAJEE,
         self::THEME_KRAJEE_BS4,
+        self::THEME_KRAJEE_BS5,
         self::THEME_MATERIAL,
     ];
 
@@ -224,7 +229,7 @@ class Select2 extends InputWidget
     {
         if (!isset($this->theme)) {
             $ver = $this->getBsVer();
-            $this->theme = $ver === 3 ? self::THEME_KRAJEE : self::THEME_KRAJEE_BS4;
+            $this->theme = $ver === 5 ? self::THEME_KRAJEE_BS5 : ($ver === 4 ? self::THEME_KRAJEE_BS4 : self::THEME_KRAJEE);
         }
         $this->initI18N(__DIR__);
         $this->pluginOptions['theme'] = $this->theme;
@@ -232,12 +237,9 @@ class Select2 extends InputWidget
         unset($this->pluginOptions['multiple']);
         $multiple = ArrayHelper::getValue($this->options, 'multiple', $multiple);
         $this->options['multiple'] = $multiple;
-        if (empty($this->pluginOptions['width'])) {
-            if ($this->theme !== self::THEME_KRAJEE_BS4) {
-                $this->pluginOptions['width'] = '100%';
-            } elseif (empty($this->addon)) {
-                $this->pluginOptions['width'] = 'auto';
-            }
+        if (empty($this->pluginOptions['width']) && empty($this->addon)) {
+            $isNotBs4Plus = $this->theme !== self::THEME_KRAJEE_BS4 && $this->theme !== self::THEME_KRAJEE_BS5;
+            $this->pluginOptions['width'] = $isNotBs4Plus ? '100%' : 'auto';
         }
         if ($this->hideSearch) {
             $this->pluginOptions['minimumResultsForSearch'] = new JsExpression('Infinity');
@@ -275,7 +277,7 @@ class Select2 extends InputWidget
 
     /**
      * Initializes and render the toggle all button
-     * @throws InvalidConfigException
+     * @throws Exception
      */
     protected function renderToggleAll()
     {
@@ -287,12 +289,12 @@ class Select2 extends InputWidget
         $unchecked = '<i class="glyphicon glyphicon-unchecked"></i>';
         $checked = '<i class="glyphicon glyphicon-check"></i>';
         if (!$this->isBs(3)) {
-            $unchecked = '<i class="far fa-square"></i>';
-            $checked = '<i class="far fa-check-square"></i>';
+            $unchecked = '<i class="far fa-square mr-1 me-1"></i>';
+            $checked = '<i class="far fa-check-square mr-1 me-1"></i>';
         }
         $settings = array_replace_recursive([
-            'selectLabel' => $unchecked . Yii::t('kvselect', 'Select all', [], $this->language),
-            'unselectLabel' => $checked . Yii::t('kvselect', 'Unselect all', [], $this->language),
+            'selectLabel' => $unchecked.Yii::t('kvselect', 'Select all', [], $this->language),
+            'unselectLabel' => $checked.Yii::t('kvselect', 'Unselect all', [], $this->language),
             'selectOptions' => [],
             'unselectOptions' => [],
             'options' => ['class' => 's2-togall-button'],
@@ -304,8 +306,8 @@ class Select2 extends InputWidget
         Html::addCssClass($options, "{$prefix}select");
         Html::addCssClass($sOptions, "s2-select-label");
         Html::addCssClass($uOptions, "s2-unselect-label");
-        $options['id'] = $prefix . $this->options['id'];
-        $labels = Html::tag('span', $settings['selectLabel'], $sOptions) .
+        $options['id'] = $prefix.$this->options['id'];
+        $labels = Html::tag('span', $settings['selectLabel'], $sOptions).
             Html::tag('span', $settings['unselectLabel'], $uOptions);
         $out = Html::tag('span', $labels, $options);
         if (!is_null($this->accesskey)) {
@@ -313,10 +315,10 @@ class Select2 extends InputWidget
             echo Html::tag('button', '', [
                 'accesskey' => $accesskey,
                 'style' => 'background: transparent;border: none !important;font-size:0;',
-                'onfocus' => '$("#' . $this->options['id'] . '").select2("open");',
+                'onfocus' => '$("#'.$this->options['id'].'").select2("open");',
             ]);
         }
-        echo Html::tag('span', $out, ['id' => 'parent-' . $options['id'], 'style' => 'display:none']);
+        echo Html::tag('span', $out, ['id' => 'parent-'.$options['id'], 'style' => 'display:none']);
     }
 
     /**
@@ -331,6 +333,7 @@ class Select2 extends InputWidget
             if ($isMultiple) {
                 unset($this->options['prompt']);
             }
+
             return;
         }
         if (isset($this->options['placeholder'])) {
@@ -345,7 +348,7 @@ class Select2 extends InputWidget
     /**
      * Embeds the input group addon
      *
-     * @param string $input
+     * @param  string  $input
      *
      * @return string
      * @throws InvalidConfigException
@@ -360,12 +363,12 @@ class Select2 extends InputWidget
         $group = ArrayHelper::getValue($this->addon, 'groupOptions', []);
         $css = ['input-group', 's2-input-group'];
         if (isset($this->size)) {
-            $css[] = 'input-group-' . $this->size;
+            $css[] = 'input-group-'.$this->size;
         }
         Html::addCssClass($group, $css);
         if ($this->pluginLoading) {
             Html::addCssClass($group, 'kv-input-group-hide');
-            Html::addCssClass($group, 'group-' . $this->options['id']);
+            Html::addCssClass($group, 'group-'.$this->options['id']);
         }
         $prepend = $this->getAddonContent('prepend');
         $append = $this->getAddonContent('append');
@@ -375,10 +378,11 @@ class Select2 extends InputWidget
         if (!$notBs3 && isset($this->addon['append']) && is_array($this->addon['append'])) {
             Html::addCssClass($group, 'select2-bootstrap-append');
         }
-        $addonText = $prepend . $input . $append;
+        $addonText = $prepend.$input.$append;
         $contentBefore = ArrayHelper::getValue($this->addon, 'contentBefore', '');
         $contentAfter = ArrayHelper::getValue($this->addon, 'contentAfter', '');
-        return Html::tag('div', $contentBefore . $addonText . $contentAfter, $group);
+
+        return Html::tag('div', $contentBefore.$addonText.$contentAfter, $group);
     }
 
     /**
@@ -389,18 +393,18 @@ class Select2 extends InputWidget
     protected function renderInput()
     {
         if ($this->pluginLoading) {
-            $this->_loadIndicator = '<div class="kv-plugin-loading loading-' . $this->options['id'] . '">&nbsp;</div>';
+            $this->_loadIndicator = '<div class="kv-plugin-loading loading-'.$this->options['id'].'">&nbsp;</div>';
             Html::addCssStyle($this->options, ['width' => '1px', 'height' => '1px', 'visibility' => 'hidden']);
         }
         Html::addCssClass($this->options, 'form-control');
         $input = $this->getInput('dropDownList', true);
-        echo $this->_loadIndicator . $this->embedAddon($input);
+        echo $this->_loadIndicator.$this->embedAddon($input);
     }
 
     /**
      * Parses the variable for boolean value and returns a right JS expression
      *
-     * @param mixed $var the variable value to parse
+     * @param  mixed  $var  the variable value to parse
      *
      * @return JsExpression
      */
@@ -421,7 +425,7 @@ class Select2 extends InputWidget
             /**
              * @var ThemeAsset $bundleClass
              */
-            $bundleClass = __NAMESPACE__ . '\Theme' . Inflector::id2camel($this->theme) . 'Asset';
+            $bundleClass = __NAMESPACE__.'\Theme'.Inflector::id2camel($this->theme).'Asset';
             $bundleClass::register($view);
         }
     }
@@ -436,12 +440,12 @@ class Select2 extends InputWidget
         $isMultiple = isset($this->options['multiple']) && $this->options['multiple'];
         $options = Json::encode([
             'themeCss' => ".select2-container--{$this->theme}",
-            'sizeCss' => empty($this->addon) && $this->size !== self::MEDIUM ? ' input-' . $this->size : '',
+            'sizeCss' => empty($this->addon) && $this->size !== self::MEDIUM ? ' input-'.$this->size : '',
             'doReset' => static::parseBool($this->changeOnReset),
             'doToggle' => static::parseBool($isMultiple && $this->showToggleAll),
             'doOrder' => static::parseBool($isMultiple && $this->maintainOrder),
         ]);
-        $this->_s2OptionsVar = 's2options_' . hash('crc32', $options);
+        $this->_s2OptionsVar = 's2options_'.hash('crc32', $options);
         $this->options['data-s2-options'] = $this->_s2OptionsVar;
         $view = $this->getView();
         $view->registerJs("var {$this->_s2OptionsVar} = {$options};", $this->hashVarLoadPosition);
@@ -470,6 +474,7 @@ class Select2 extends InputWidget
                 return true;
             }
         }
+
         return false;
     }
 }
