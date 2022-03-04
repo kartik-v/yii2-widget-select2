@@ -67,7 +67,7 @@ Enhancements with release v2.0:
 
 ## Documentation and Demo
 
-You can refer detailed [documentation and demos](http://demos.krajee.com/widget-details/select2) on usage of the extension.
+You can refer detailed [documentation and demos](http://demos.krajee.com/widget-details/select2) and [API Code Documentation](https://docs.krajee.com/kartik-select2-select2) on usage of the extension.
 
 ## Usage
 

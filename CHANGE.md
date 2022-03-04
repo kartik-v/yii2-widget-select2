@@ -3,7 +3,7 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.2.3
 
-**Date:** _under development_
+**Date:** 04-Mar-2022
 
 - (enh #345): Create new theme krajee-bs5 for Bootstrap 5.x.
 - (enh #344): Match language for toggleAll message.
