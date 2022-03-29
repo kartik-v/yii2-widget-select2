@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2022
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.2.3
+ * @version 2.2.4
  */
 
 namespace kartik\select2;
@@ -82,8 +82,13 @@ class Select2 extends InputWidget
     const THEME_BOOTSTRAP = 'bootstrap';
     /**
      * Select2 Krajee theme (default for BS3)
+     * @deprecated since v2.2.4
      */
-    const THEME_KRAJEE = 'krajee';
+    const THEME_KRAJEE = 'krajee-bs3';
+    /**
+     * Select2 Krajee theme (default for BS3)
+     */
+    const THEME_KRAJEE_BS3 = 'krajee-bs3';
     /**
      * Select2 Krajee theme (default for BS4)
      */
@@ -113,8 +118,9 @@ class Select2 extends InputWidget
 
     /**
      * @var string the theme name to be used for styling the Select2. If not set this will default to:
-     * - [[THEME_KRAJEE]] if [[bsVersion]] is set to '3.x'
-     * - [[THEME_KRAJEE_BS4]] if [[bsVersion]] is set to '4.x' or '5.x'
+     * - [[THEME_KRAJEE_BS3]] if [[bsVersion]] is set to '3.x'
+     * - [[THEME_KRAJEE_BS4]] if [[bsVersion]] is set to '4.x'
+     * - [[THEME_KRAJEE_BS5]] if [[bsVersion]] is set to '5.x'
      */
     public $theme;
 
@@ -202,7 +208,7 @@ class Select2 extends InputWidget
         self::THEME_DEFAULT,
         self::THEME_CLASSIC,
         self::THEME_BOOTSTRAP,
-        self::THEME_KRAJEE,
+        self::THEME_KRAJEE_BS3,
         self::THEME_KRAJEE_BS4,
         self::THEME_KRAJEE_BS5,
         self::THEME_MATERIAL,
@@ -229,7 +235,7 @@ class Select2 extends InputWidget
     {
         if (!isset($this->theme)) {
             $ver = $this->getBsVer();
-            $this->theme = $ver === 5 ? self::THEME_KRAJEE_BS5 : ($ver === 4 ? self::THEME_KRAJEE_BS4 : self::THEME_KRAJEE);
+            $this->theme = 'krajee-bs' . $ver;
         }
         $this->initI18N(__DIR__);
         $this->pluginOptions['theme'] = $this->theme;
@@ -238,8 +244,7 @@ class Select2 extends InputWidget
         $multiple = ArrayHelper::getValue($this->options, 'multiple', $multiple);
         $this->options['multiple'] = $multiple;
         if (empty($this->pluginOptions['width']) && empty($this->addon)) {
-            $isNotBs4Plus = $this->theme !== self::THEME_KRAJEE_BS4 && $this->theme !== self::THEME_KRAJEE_BS5;
-            $this->pluginOptions['width'] = $isNotBs4Plus ? '100%' : 'auto';
+            $this->pluginOptions['width'] = $this->isBs(3) ? '100%' : 'auto';
         }
         if ($this->hideSearch) {
             $this->pluginOptions['minimumResultsForSearch'] = new JsExpression('Infinity');
@@ -394,7 +399,11 @@ class Select2 extends InputWidget
     {
         if ($this->pluginLoading) {
             $this->_loadIndicator = '<div class="kv-plugin-loading loading-'.$this->options['id'].'">&nbsp;</div>';
-            Html::addCssStyle($this->options, ['width' => '1px', 'height' => '1px', 'visibility' => 'hidden']);
+            $opts = ['width' => '1px', 'height' => '1px', 'visibility' => 'hidden'];
+            if ($this->isBs(3)) {
+                $opts['width'] = '100%';
+            }
+            Html::addCssStyle($this->options, $opts);
         }
         Html::addCssClass($this->options, 'form-control');
         $input = $this->getInput('dropDownList', true);

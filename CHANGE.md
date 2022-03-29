@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.2.4
+
+**Date:** _under development_
+
+- (enh #348): Standardize Krajee theme for each BS version & other style enhancements.
+
 ## Version 2.2.3
 
 **Date:** 04-Mar-2022

@@ -1,6 +1,6 @@
 /*!
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2022
- * @version 2.2.3
+ * @version 2.2.4
  *
  * Krajee Bootstrap 4.x Theme for Select2
  *
@@ -479,13 +479,13 @@ select.is-valid + .select2-container--krajee-bs4 .select2-selection--single,
 :not(.form-floating) > .input-sm.select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice,
 :not(.form-floating) > .input-group-sm .select2-container--krajee-bs4 .select2-selection--multiple .select2-selection__choice {
     font-size: 0.8rem;
-    margin: 0.2rem 0 0.2rem 0.2rem;
+    margin: 0.3rem 0 0.2rem 0.2rem;
     padding: 0.05rem 0.05rem 0.05rem 0.2rem;
 }
 
 :not(.form-floating) > .input-sm.select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
 :not(.form-floating) > .input-group-sm .select2-container--krajee-bs4[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
-    margin: 0 0.2rem 0.2rem 0;
+    margin: 0.3rem 0.2rem 0.2rem 0;
     padding: 0.05rem 0.2rem 0.05rem 0.05rem;
 }
 

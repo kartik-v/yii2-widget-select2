@@ -4,7 +4,7 @@
  * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2022
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.2.3
+ * @version 2.2.4
  */
 
 namespace kartik\select2;
@@ -15,7 +15,7 @@ namespace kartik\select2;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class ThemeKrajeeAsset extends ThemeAsset
+class ThemeKrajeeBs3Asset extends ThemeAsset
 {
     /**
      * @inheritdoc
@@ -23,7 +23,7 @@ class ThemeKrajeeAsset extends ThemeAsset
     public function init()
     {
         $this->initTheme();
-        $this->setupAssets('css', ['css/select2-krajee']);
+        $this->setupAssets('css', ['css/select2-krajee-bs3']);
         parent::init();
     }
 }
