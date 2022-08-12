@@ -457,7 +457,7 @@ class Select2 extends InputWidget
         $this->_s2OptionsVar = 's2options_'.hash('crc32', $options);
         $this->options['data-s2-options'] = $this->_s2OptionsVar;
         $view = $this->getView();
-        $view->registerJs("var {$this->_s2OptionsVar} = {$options};", $this->hashVarLoadPosition);
+        $view->registerJs("window.{$this->_s2OptionsVar} = {$options};", $this->hashVarLoadPosition);
         if ($this->maintainOrder) {
             $val = Json::encode(is_array($this->value) ? $this->value : [$this->value]);
             $view->registerJs("initS2Order('{$id}',{$val});");
