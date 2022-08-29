@@ -3,10 +3,10 @@ Change Log: `yii2-widget-select2`
 
 ## Version 2.2.4
 
-**Date:** _under development_
+**Date:** 29-Aug-2022
 
-- (enh #348): Standardize Krajee theme for each BS version & other style enhancements.
 - (bug #350): Some options do not work when `hashVarLoadPosition` is `View::POS_READY`.
+- (enh #348): Standardize Krajee theme for each BS version & other style enhancements.
 
 ## Version 2.2.3
 
