@@ -1,6 +1,14 @@
 Change Log: `yii2-widget-select2`
 =================================
 
+## Version 2.2.5
+
+**Date:** 22-Jun-2023
+
+- (enh #357, #354): Update multiple select styling Krajee BS5 theme.
+- (enh #355): Update Bulgarian translations.
+
+
 ## Version 2.2.4
 
 **Date:** 29-Aug-2022

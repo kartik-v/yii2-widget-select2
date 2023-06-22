@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2022
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2023
  * @package yii2-widgets
  * @subpackage yii2-widget-select2
- * @version 2.2.4
+ * @version 2.2.5
  */
 
 namespace kartik\select2;
