@@ -283,6 +283,8 @@
 
 .select2-container--krajee-bs5 .select2-selection--multiple .select2-search--inline {
     vertical-align: middle;
+    float: none;
+    display: inline-block;
 }
 
 .select2-container--krajee-bs5 .select2-selection--multiple .select2-search--inline .select2-search__field {
