@@ -41,3 +41,24 @@
 .s2-togall-button .s2-unselect-label i {
     margin: auto 0.25rem;
 }
+
+/* CSP-compliant classes to replace inline styles */
+.s2-plugin-loading {
+    width: 1px !important;
+    height: 1px !important;
+    visibility: hidden !important;
+}
+
+.s2-plugin-loading-bs3 {
+    width: 100% !important;
+}
+
+.s2-accesskey-btn {
+    background: transparent !important;
+    border: none !important;
+    font-size: 0 !important;
+}
+
+.s2-togall-hidden {
+    display: none !important;
+}

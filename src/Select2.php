@@ -319,11 +319,11 @@ class Select2 extends InputWidget
             $accesskey = substr($this->accesskey, 0, 1);
             echo Html::tag('button', '', [
                 'accesskey' => $accesskey,
-                'style' => 'background: transparent;border: none !important;font-size:0;',
+                'class' => 's2-accesskey-btn',
                 'onfocus' => '$("#'.$this->options['id'].'").select2("open");',
             ]);
         }
-        echo Html::tag('span', $out, ['id' => 'parent-'.$options['id'], 'style' => 'display:none']);
+        echo Html::tag('span', $out, ['id' => 'parent-'.$options['id'], 'class' => 's2-togall-hidden']);
     }
 
     /**
@@ -399,11 +399,10 @@ class Select2 extends InputWidget
     {
         if ($this->pluginLoading) {
             $this->_loadIndicator = '<div class="kv-plugin-loading loading-'.$this->options['id'].'">&nbsp;</div>';
-            $opts = ['width' => '1px', 'height' => '1px', 'visibility' => 'hidden'];
+            Html::addCssClass($this->options, 's2-plugin-loading');
             if ($this->isBs(3)) {
-                $opts['width'] = '100%';
+                Html::addCssClass($this->options, 's2-plugin-loading-bs3');
             }
-            Html::addCssStyle($this->options, $opts);
         }
         Html::addCssClass($this->options, 'form-control');
         $input = $this->getInput('dropDownList', true);
